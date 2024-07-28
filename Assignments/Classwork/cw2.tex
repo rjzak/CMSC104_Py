@@ -1,0 +1,139 @@
+% Copyright 2002-2024 The University of Maryland Baltimore County (UMBC)
+% 1000 Hilltop Circle, Baltimore, Maryland, 21250, USA
+% https://www.csee.umbc.edu/
+
+\documentclass[letter,10pt]{article}
+\usepackage[breaklinks]{hyperref}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={XYZ null null 1.00},    % disable zoom
+    pdftitle={Classwork 2},    % title
+    pdfauthor={Richard Zak},     % author
+    pdfsubject={UMBC CMSC104 Problem Solving and Computer Programming},   % subject of the document
+    pdfkeywords={Computer Science, Programming, Problem Solving, CSEE}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=false,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\pagestyle{fancy}
+\usepackage[letterpaper, margin=1in]{geometry}
+\geometry{letterpaper}
+\usepackage{listings} % Syntax highlighing
+\usepackage{xcolor}
+\usepackage{parskip} % Disable initial indent
+\usepackage{color,soul} % Highligher
+\usepackage[normalem]{ulem} % Strikethrough with \sout{}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage[utf8]{inputenc}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} % Remove default underline from header package
+\rhead{CMSC 104 Section 01: Classwork 2}
+%\rhead{}
+\lhead{\begin{picture}(0,0) \put(0,-10){\includegraphics[width=1.1cm]{../../Images/UMBC-vertical}} \end{picture}}
+\cfoot{\thepage}
+\rfoot{\input{../../semester}}
+\lfoot{CMSC 104 Section 01}
+\AtEndDocument{\vfill \footnotesize{Last modified: 28 July 2024}}
+\AtEndDocument{\rfoot{\input{../../semester}}}
+\renewcommand\thesubsection{\arabic{subsection}} % Show only subsection numbers, not section.subsection
+
+\begin{document}
+    \huge
+    \textbf{Classwork 2: More Python Warm-Ups}
+    \normalsize
+    \\ ~~ \\
+    \textbf{In-class Date: Wednesday 11 September} \\
+    \textbf{Due Date: Tuesday 17 September}
+    
+    \section*{Objectives}
+    \paragraph{}To continue getting used to writing Python code.
+    
+    \section*{Assignment:}
+    \subsection{Install Python}
+    \paragraph{}As mentioned in the syllabus, ensure that Python with IDLE is installed on your computer, available at \url{https://www.python.org/downloads/}. Optionally, you may use PyCharm Community Edition available at \url{https://www.jetbrains.com/pycharm/}, or Google's interactive Python environment at \url{https://colab.research.google.com/}.
+    
+    \subsection*{Starter Code \& Assignment}
+    \paragraph{}Use the starter code below and follow the in-line instructions.
+    
+    \begin{lstlisting}[language=python]
+# Name: Alice Smith (your name here!)
+
+# Part 1: Replace ?? with a list of things to print, such as
+# favourite foods, summer activities, pet names, etc.
+for item in ??:
+    print(item)
+
+# Part 2: Prompt the user for 4 words: a noun, a verb, an adjective,
+# and a place. Then, display the words as a sentence.
+noun = ???
+verb = ???
+adj = ???
+place = ???
+print("Bring your " + ???)
+
+# Part 3: As of July 2024, the Voyager 1 spacecraft is about
+# 24,447,732,226 kilometers from Earth. Radio transmissions are about
+# the speed of light: 300,000 kilometers per second. Write code which
+# calculates the estimated transmission time for one-way communication
+# with Voyager 1 in hours. Estimated answer: 22.6 hours.
+distance_over_speed = 24447732226.0/300000.0
+
+# Convert from hours to seconds
+
+# Print the result and include a description.
+
+    \end{lstlisting}
+    
+    \section*{Reminder}
+    \paragraph{}Assignments are your own effort. Do not share your code.
+    
+    \section*{Grading Rubric}
+    \paragraph{}Script prints:
+    \begin{itemize}
+        \item your list of items: 25 points.
+        \item the sentence with user-provided words: 25 points.
+        \item the transmission time between Earth \& Voyager 1: 50 points.
+    \end{itemize}
+    
+    \section*{What to Submit}
+    \begin{itemize}
+        \item Your saved Python script.
+    \end{itemize}
+    
+\end{document}
