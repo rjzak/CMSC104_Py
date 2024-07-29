@@ -1,0 +1,181 @@
+% Copyright 2002-2024 The University of Maryland Baltimore County (UMBC)
+% 1000 Hilltop Circle, Baltimore, Maryland, 21250, USA
+% https://www.csee.umbc.edu/
+
+\documentclass[letter,10pt]{article}
+\usepackage[breaklinks]{hyperref}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={XYZ null null 1.00},    % disable zoom
+    pdftitle={Classwork 3},    % title
+    pdfauthor={Richard Zak},     % author
+    pdfsubject={UMBC CMSC104 Problem Solving and Computer Programming},   % subject of the document
+    pdfkeywords={Computer Science, Programming, Problem Solving, CSEE}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=false,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\pagestyle{fancy}
+\usepackage[letterpaper, margin=1in]{geometry}
+\geometry{letterpaper}
+\usepackage{listings} % Syntax highlighing
+\usepackage{xcolor}
+\usepackage{parskip} % Disable initial indent
+\usepackage{color,soul} % Highligher
+\usepackage[normalem]{ulem} % Strikethrough with \sout{}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage[utf8]{inputenc}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} % Remove default underline from header package
+\rhead{CMSC 104 Section 01: Classwork 3}
+%\rhead{}
+\lhead{\begin{picture}(0,0) \put(0,-10){\includegraphics[width=1.1cm]{../../Images/UMBC-vertical}} \end{picture}}
+\cfoot{\thepage}
+\rfoot{\input{../../semester}}
+\lfoot{CMSC 104 Section 01}
+\AtEndDocument{\vfill \footnotesize{Last modified: 28 July 2024}}
+\AtEndDocument{\rfoot{\input{../../semester}}}
+\renewcommand\thesubsection{\arabic{subsection}} % Show only subsection numbers, not section.subsection
+
+\begin{document}
+    \huge
+    \textbf{Classwork 3: Modeling \& Simulation}
+    \normalsize
+    \\ ~~ \\
+    \textbf{In-class Date: Wednesday 18 September} \\
+    \textbf{Due Date: Tuesday 24 September}
+    
+    \section*{Objectives}
+    \paragraph{}To continue getting used to writing Python code.
+    
+    \section*{Assignment:}
+    \subsection{Install Python}
+    \paragraph{}As mentioned in the syllabus, ensure that Python with IDLE is installed on your computer, available at \url{https://www.python.org/downloads/}. Optionally, you may use PyCharm Community Edition available at \url{https://www.jetbrains.com/pycharm/}, or Google's interactive Python environment at \url{https://colab.research.google.com/}.
+    
+    \subsection*{Starter Code \& Assignment}
+    \paragraph{}Use the starter code below and follow the in-line instructions.
+    
+    \begin{lstlisting}[language=python]
+# Name: Alice Smith (your name here!)
+
+# Part 1: Doubling the allowance. Starting from a penny per day, calculate
+# how much allowance you'd make on any given day, where the user is prompted
+# for the day. Day 1: $0.01, Day 2: $0.02, Day 3: $0.04, Day 4: $0.08, etc.
+
+start = 0.02
+
+# prompt the user for a number to represent a day
+day = ??
+
+# calculate the total with a loop
+for ???:
+    ???
+
+# Part 2: Tip Calculator. Write code which prompts the user for a sub-total
+# and tip percentage, then display the final bill.
+# Extra credit: handle both situations where the tip might be greater or less than
+# one. For example, 10% could be 10.0 or 0.10.
+# Remember to use the correct data type.
+
+subtotal = ???
+tip = ???
+total = ?
+printf("Grand total:", total)
+
+# Part 3: Fibonacci calculator. The Fibonacci sequence starts with 0 and 1, and
+# continues by adding the prior two digits. 0 and 1 become 1; 1 and 1 become 2; etc.
+# The first few numbers in the sequence are: 1, 2, 3, 5, 8, 13, 21, 34, 55, 89.
+# Write code to primpt the user for a number, and print the Fibonacci number at
+# that position in the sequence.
+
+num1 = 0
+num2 = 1
+count = ???
+for ???:
+    ???
+    temp = num1 + num2
+    num1 = num2
+    num2 = temp
+
+print("The number at position", count, " is", num2)
+
+# Part 4: Prime numbers. As the user for a number and test that it's a prime
+# number. Do this by checking if the user's number is divisible by any of the
+# numbers between 2 and the user's number minus one. As a shortcut, you may check
+# numbers between 2 and the square root if the user's number.
+
+import math # for sqrt()
+
+the_num = ???
+is_prime = True
+
+for _ in range(2, math.sqrt(the_num)):
+    # Test that the number is prime, hint: use the % operator.
+    
+    # Update `is_prime` appropriately.
+    # Exit early if isn't not prime.
+
+if is_prime:
+    print(the_num, "is prime!")
+else:
+    print(the_num, "is not prime.")
+        
+    \end{lstlisting}
+    
+    \section*{Reminder}
+    \paragraph{}Assignments are your own effort. Do not share your code.
+    
+    \section*{Grading Rubric}
+    \paragraph{}Script prints:
+    \begin{itemize}
+        \item allowance for a given day: 25 points.
+        \item the correct total with tip: 25 points.
+        \begin{itemize}
+            \item Tip extra credit: +5 points.
+        \end{itemize}
+        \item the Fibonacci value at the $n^{th}$ th position in the sequence: 25 points.
+        \item when the user's number is prime correctly: 25 points.
+    \end{itemize}
+    
+    \section*{What to Submit}
+    \begin{itemize}
+        \item Your saved Python script.
+    \end{itemize}
+    
+\end{document}
