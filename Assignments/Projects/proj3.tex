@@ -1,0 +1,198 @@
+% Copyright 2020-2024 Richard J. Zak
+% richard.j.zak@gmail.com
+
+\documentclass[letter,10pt]{article}
+\usepackage[breaklinks]{hyperref}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={XYZ null null 1.00},    % disable zoom
+    pdftitle={Project 3},    % title
+    pdfauthor={Richard Zak},     % author
+    pdfsubject={UMBC CMSC104 Problem Solving and Computer Programming},   % subject of the document
+    pdfkeywords={Computer Science, Programming, Problem Solving, CSEE}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=false,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\pagestyle{fancy}
+\usepackage[letterpaper, margin=1in]{geometry}
+\geometry{letterpaper}
+\usepackage{attachfile}
+\usepackage{listings} % Syntax highlighing
+\usepackage{xcolor}
+\usepackage{parskip} % Disable initial indent
+\usepackage{color,soul} % Highligher
+\usepackage[normalem]{ulem} % Strikethrough with \sout{}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage[utf8]{inputenc}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} % Remove default underline from header package
+\rhead{CMSC 104 Section 01: Project 3}
+%\rhead{}
+\lhead{\begin{picture}(0,0) \put(0,-10){\includegraphics[width=1.1cm]{../../Images/UMBC-vertical}} \end{picture}}
+\cfoot{\thepage}
+\rfoot{\input{../../semester}}
+\lfoot{CMSC 104 Section 01}
+\AtEndDocument{\vfill \footnotesize{Last modified: 03 August 2024}}
+\AtEndDocument{\rfoot{\input{../../semester}}}
+\renewcommand\thesubsection{\arabic{subsection}} % Show only subsection numbers, not section.subsection
+
+\begin{document}
+    
+    \huge
+    \textbf{Project 3: Text-based Game}
+    \normalsize
+    \\ ~~ \\
+    \textbf{Assigned Date: DATE} \\
+    \textbf{Due Date: DATE}
+    
+    \section*{Objectives}
+    \paragraph{}Create a simple, text-based adventure game.
+    
+    \subsection*{Starter Code \& Assignment}
+    \paragraph{}Using the starter code below (or code attached here \attachfile{../../Code/proj3_game.py}), design a game! The game isn't very interesting, and as-is, it doesn't inform the player of connected rooms or available items. That would be a good feature to implement.
+    
+    \paragraph{}Be creative. You're free to change the settings, items, layout, commands, inventory, and other aspects.
+    
+    \begin{lstlisting}[language=python]
+        # Name: Alice Smith (your name here!)
+
+def show_instructions():
+    print("""
+Text-Based Adventure Game
+=========================
+Commands:
+    go [direction]
+    get [item]
+    use [item]""")
+
+def show_status():
+    print("---------------------------")
+    print("You are in the " + current_room)
+    print(rooms[current_room]['description'])
+    print("Inventory: " + str(inventory))
+    print("---------------------------")
+
+# Game setup
+inventory = []
+rooms = {
+    'Hall': {
+        'description': 'a long hallway with paintings on the walls.',
+        'items': [],
+        'actions': {
+            'north': 'Kitchen',
+            'east': 'Living Room'
+        }
+    },
+    'Kitchen': {
+        'description': 'a kitchen with a fridge and a table.',
+        'items': ['key'],
+        'actions': {
+            'south': 'Hall'
+        }
+    },
+    'Living Room': {
+        'description': 'a cozy living room with a fireplace.',
+        'items': [],
+        'actions': {
+            'west': 'Hall',
+            'north': 'Garden'
+        }
+    },
+    'Garden': {
+        'description': 'a beautiful garden with blooming flowers.',
+        'items': [],
+        'actions': {
+            'south': 'Living Room'
+        }
+    }
+}
+
+current_room = 'Hall'
+
+show_instructions()
+
+# Game loop
+while True:
+    show_status()
+
+    # Get the player's next move
+    move = input("> ").lower().split()
+
+    # Check if the player wants to move
+    if move[0] == 'go':
+        direction = move[1]
+        if direction in rooms[current_room]['actions']:
+            current_room = rooms[current_room]['actions'][direction]
+        else:
+            print("You can't go that way.")
+
+    # Check if the player wants to get an item
+    elif move[0] == 'get':
+        item = move[1]
+        if item in rooms[current_room]['items']:
+            inventory.append(item)
+            rooms[current_room]['items'].remove(item)
+            print("You picked up the " + item + ".")
+        else:
+           print("There is no " + item + " here.")
+
+    # Implement more commands and game logic here
+
+    # Example ending condition
+    if current_room == 'Garden' and 'key' in inventory:
+        print("You used the key to unlock the gate and escaped, you win!")
+        break
+    \end{lstlisting}
+    
+    \section*{Reminder}
+    \paragraph{}Assignments are your own effort. Do not share your code.
+    
+    \section*{Grading Rubric}
+    \begin{itemize}
+        \item Game works: 75 points.
+        \item Invalid input properly handled: 25 points.
+    \end{itemize}
+    
+    \section*{What to Submit}
+    \begin{itemize}
+        \item Your Python script.
+    \end{itemize}
+    
+\end{document}
