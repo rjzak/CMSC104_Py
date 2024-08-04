@@ -90,6 +90,31 @@
     \subsection*{Assignment}
     \paragraph{}Using the starter code below, 
     
+    \begin{lstlisting}[language=python]
+# Name: Alice Smith (your name here!)
+
+emoji = {
+    'happy': "\U0001F600",
+}
+
+user_input = ???
+
+for fragment in user_input.split():
+    # If 'fragment' is in 'emoji', replace 'fragment' with 'emoji[fragment]'
+    ???
+
+print(user_input)
+    \end{lstlisting}
+
+    \subsubsection*{Notes}
+    \paragraph{}To prevent Python from misinterpreting the emoji bytes or from returning an error:
+    \begin{enumerate}
+        \item The emoji codes are all four bytes in length (\texttt{0x00, 0x01, 0xF6, 0x00}, you'll need leading zeroes).
+        \item The bytes must be in quotes.
+        \item The bytes must start with \texttt{\textbackslash U}.
+    \end{enumerate}
+    \paragraph{}In addition, ensure to handle punctuation, such as ``happy'' vs. ``happy\textbf{,}''.
+    
     \includegraphics{proj2_python_face}
     
     \section*{Reminder}
