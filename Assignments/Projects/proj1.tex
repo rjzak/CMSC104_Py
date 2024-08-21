@@ -1,0 +1,146 @@
+% Copyright 2020-2024 Richard J. Zak
+% richard.j.zak@gmail.com
+
+\documentclass[letter,10pt]{article}
+\usepackage[breaklinks]{hyperref}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={XYZ null null 1.00},    % disable zoom
+    pdftitle={Project 1},    % title
+    pdfauthor={Richard Zak},     % author
+    pdfsubject={UMBC CMSC104 Problem Solving and Computer Programming},   % subject of the document
+    pdfkeywords={Computer Science, Programming, Problem Solving, CSEE}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=false,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\pagestyle{fancy}
+\usepackage[letterpaper, margin=1in]{geometry}
+\geometry{letterpaper}
+\usepackage{listings} % Syntax highlighing
+\usepackage{xcolor}
+\usepackage{parskip} % Disable initial indent
+\usepackage{color,soul} % Highligher
+\usepackage[normalem]{ulem} % Strikethrough with \sout{}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage[utf8]{inputenc}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} % Remove default underline from header package
+\rhead{CMSC 104 Section 01: Project 1}
+%\rhead{}
+\lhead{\begin{picture}(0,0) \put(0,-10){\includegraphics[width=1.1cm]{../../Images/UMBC-vertical}} \end{picture}}
+\cfoot{\thepage}
+\rfoot{\input{../../semester}}
+\lfoot{CMSC 104 Section 01}
+\AtEndDocument{\vfill \footnotesize{Last modified: 20 August 2024}}
+\AtEndDocument{\rfoot{\input{../../semester}}}
+\renewcommand\thesubsection{\arabic{subsection}} % Show only subsection numbers, not section.subsection
+
+\begin{document}
+    
+    \huge
+    \textbf{Project 1: The To-Do List!}
+    \normalsize
+    \\ ~~ \\
+    \textbf{In-class Date: ASSIGNED} \\
+    \textbf{Due Date: DUE}
+    
+    \section*{Objectives}
+    \paragraph{}To create a program which is able to create, save, load, and alter a to-do list.
+    
+    \section*{Background}
+    \paragraph{}We all use to-do lists to keep organized. Some people just have a to-do list in their mind, some of us have to write them down. This application will help you keep track of your list, and you'll be able to remove items from the list you've completed.
+    
+    \subsection*{Assignment}
+    \paragraph{}Using the starter code below, complete the to-do list manager script.
+    
+    \begin{lstlisting}[language=python]
+# Name: Alice Smith (your name here!)
+
+import os
+
+def list_manager(action):
+    to_do_list = []
+    if os.path.exists("list.txt"):
+        to_do_list = open("list.txt").read().split("\n")
+    
+    if action == "????":
+        for ??? in ???:
+            print(???)
+    
+    if action == "????":
+        new_item = ????("Add an item:")
+        to_do_list.????(new_item)
+    
+    if action == "????":
+        old_item = input("Which item have you completed?")
+        if old_item in to_do_list:
+            to_do_list.remove(???)
+    
+    if len(to_do_list) > 0:
+        open("list.txt", "w").write("\n".join(???))
+    
+action = ????("What would you like to do?")
+list_manager(????)
+    \end{lstlisting}
+    
+    \section*{Reminder}
+    \paragraph{}Assignments are your own effort. Do not share your code.
+    
+    \section*{Extra Credit}
+    \paragraph{}Add any embellishments that you think would help with to-do lists. Hint: this script uses the new-line character \verb|\n| to separate one list item from another. If you open the file this script creates, \verb|list.txt|, you'll see that each item is on it's own line. How might this be extended to support additional data relevant to to-do lists without breaking the format? \textit{You don't have to implement something like this, but a written description of how you would approach this problem is acceptable. This description may be included as a comment in your Python script.}
+    
+    \section*{Grading Rubric}
+    \paragraph{}The script:
+    \begin{itemize}
+        \item creates a list: 25 points.
+        \item prints a list: 25 points.
+        \item adds to a list: 25 points.
+        \item removes from a list: 25 points
+        \begin{itemize}
+            \item Extra credit: +10 (or more) points.
+        \end{itemize}
+    \end{itemize}
+    
+    \section*{What to Submit}
+    \begin{itemize}
+        \item Your Python script.
+    \end{itemize}
+    
+\end{document}
