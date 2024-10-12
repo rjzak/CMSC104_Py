@@ -1,0 +1,176 @@
+% Copyright 2024 Richard J. Zak
+% richard.j.zak@gmail.com
+
+\documentclass[letter,10pt]{article}
+\usepackage[breaklinks]{hyperref}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={XYZ null null 1.00},    % disable zoom
+    pdftitle={Practice Quiz 2},    % title
+    pdfauthor={Richard Zak},     % author
+    pdfsubject={UMBC CMSC104 Problem Solving and Computer Programming},   % subject of the document
+    pdfkeywords={Computer Science, Programming, Problem Solving, CSEE}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=false,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\pagestyle{fancy}
+\usepackage[letterpaper, margin=1in]{geometry}
+\geometry{letterpaper}
+\usepackage{listings} % Syntax highlighing
+\usepackage{amsmath}
+\usepackage{parskip} % Disable initial indent
+\usepackage{color,soul} % Highligher
+\usepackage[normalem]{ulem} % Strikethrough with \sout{}
+\usepackage{bbding} % For checkmark in itemize
+\newcommand*\tick{\item[\Checkmark]}
+\newcommand*\fail{\item[\XSolidBrush]}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage[utf8]{inputenc}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} % Remove default underline from header package
+\rhead{CMSC 104 Section 01: Practice Quiz 2}
+%\rhead{}
+\lhead{\begin{picture}(0,0) \put(0,-10){\includegraphics[width=1.1cm]{../Images/UMBC-vertical}} \end{picture}}
+\cfoot{\thepage}
+\rfoot{\input{../semester}}
+\lfoot{CMSC 104 Section 01}
+\AtEndDocument{\vfill \footnotesize{Last modified: 12 October 2024}}
+\AtEndDocument{\rfoot{\input{../semester}}}
+\renewcommand\thesubsection{\arabic{subsection}} % Show only subsection numbers, not section.subsection
+
+\begin{document}
+
+\huge
+\textbf{Practice Quiz 2}
+\normalsize
+
+\paragraph{}Quiz 2 covers chapters 1 through 6. Please answer the following questions. Partial credit may be given for incomplete free response questions.
+
+\begin{enumerate}
+    \item Accessing a single character in a string is called what?
+    \begin{enumerate}
+        \tick Indexing
+    \end{enumerate}
+
+    \item Merging two or more strings into a larger string is called what?
+    \begin{enumerate}
+        \tick Concatenating
+    \end{enumerate}
+
+    \item Getting a sub-string from a larger string ("science" from "Computer science is fun") is called what?
+    \begin{enumerate}
+        \tick Slicing
+    \end{enumerate}
+
+    \item \textbf{True}: A function in Python always returns a value. \\
+    \textit{A function returns one or more values using the \texttt{return} keyword, or else the function returns \texttt{None}.}
+
+    \item Identify four things wrong with this function:
+    \begin{lstlisting}[language=python]
+# The Leibniz forumula for Pi
+def calculate_pi(iterations=1000000):
+    k = 0 # Denominator
+    # initialization of `s` is missing.
+    for i in range(iterations):
+        if i % 2 = 0: # Should be the equality operator `==` not the assignment operator `=`
+            s += 4/k # Division by zero, since `k` is initialized to zero
+        else:
+            s -= 4/k
+        k += 2
+    pi = s # The print statement expects this function to return a value, but there's no `return pi` statement.
+
+# Print the results from the function
+print("Pi with 10 iterations:", calculate_pi(10))
+print("Pi with 1000000 iterations:", calculate_pi())
+    \end{lstlisting}
+
+    \item Which are benefits of writing functions?
+    \begin{enumerate}
+        \tick Enables code reuse. \\
+        \textit{Think about the \texttt{print()} or \texttt{math.sqrt()} functions, we can use them despite not having written them ourselves, or even knowing how they work.}
+        \tick Helps improve the organization of code within a program.
+        \tick Makes the code more readable, and therefore easier to understand.
+        \fail Is required to work on Windows systems.
+        \tick May reduce the mount of code in a program.
+        \tick May make the program easier to maintain. \\
+        \textit{Better code organization should make it easier to understand.}
+        \fail Allows the program run faster.
+        \fail Functions negate the need for commenting of code. \\
+        \textit{Comments are important, especially for complicated algorithms}.
+    \end{enumerate}
+
+    \item Under what condition(s) may a Python function change the value of the parameter it receives? \\
+    \textit{Passing elements to a function in a list allow the function to update values such that the calling function is able to observe the new values. The same thing goes for \texttt{class} types, which we'll cover in Chapter 10.}
+
+    \item How many values may a Python function return? \\
+    \textit{At least one, the \texttt{None} type if there's no \texttt{return} statement. Otherwise, a function may return one or more values separated by a comma.}
+
+    \item Implement a tip calculator using at least one function. \\
+    \textit{This is a bit over-engineered compared to that's required, but this is a nice example since it uses a loop to ensure that the user enters a proper value, and the only way to exit the loop is a correct value. It makes good use of a function since it receives the message, so it works for both getting the subtotal and tip amount. This also uses an if statement to handle a tip amount expressed as a decimal or percentage, 0.1 vs. 10\%.}
+    \begin{lstlisting}[language=python]
+def getUserInput(input_message):
+    while True:
+        received = input(input_message)
+        try:
+            number = float(received)
+            return number
+        except:
+            print("Sorry, {} is not a valid number. Please try again.".format(received))
+
+subtotal = getUserInput("Enter the subtotal")
+tip = getUserInput("Enter the tip")
+if tip > 1.0:
+    tip = subtotal / tip
+else:
+    tip = subtotal * tip
+final_total = subtotal + tip
+print("The total bill: ${:.2f}.".format(final_total))
+    \end{lstlisting}
+
+    \item Write a code snippet which opens a file called \texttt{foo.txt} and prints each line.
+    \begin{lstlisting}[language=python]
+f = open("foo.txt")
+for line in f:
+    print(line)
+    \end{lstlisting}
+
+\end{enumerate}
+
+\end{document}
