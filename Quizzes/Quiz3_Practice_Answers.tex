@@ -1,0 +1,131 @@
+% Copyright 2024 Richard J. Zak
+% richard.j.zak@gmail.com
+
+\documentclass[letter,10pt]{article}
+\usepackage[breaklinks]{hyperref}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={XYZ null null 1.00},    % disable zoom
+    pdftitle={Practice Quiz 3 Answers},    % title
+    pdfauthor={Richard Zak},     % author
+    pdfsubject={UMBC CMSC104 Problem Solving and Computer Programming},   % subject of the document
+    pdfkeywords={Computer Science, Programming, Problem Solving, CSEE}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=false,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\pagestyle{fancy}
+\usepackage[letterpaper, margin=1in]{geometry}
+\geometry{letterpaper}
+\usepackage{listings} % Syntax highlighing
+\usepackage{amsmath}
+\usepackage{parskip} % Disable initial indent
+\usepackage{color,soul} % Highligher
+\usepackage[normalem]{ulem} % Strikethrough with \sout{}
+\usepackage{bbding} % For checkmark in itemize
+\newcommand*\tick{\item[\Checkmark]}
+\newcommand*\fail{\item[\XSolidBrush]}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage[utf8]{inputenc}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} % Remove default underline from header package
+\rhead{CMSC 104 Section 01: Practice Quiz 3 Answers}
+%\rhead{}
+\lhead{\begin{picture}(0,0) \put(0,-10){\includegraphics[width=1.1cm]{../Images/UMBC-vertical}} \end{picture}}
+\cfoot{\thepage}
+\rfoot{\input{../semester}}
+\lfoot{CMSC 104 Section 01}
+\AtEndDocument{\vfill \footnotesize{Last modified: 04 November 2024}}
+\AtEndDocument{\rfoot{\input{../semester}}}
+\renewcommand\thesubsection{\arabic{subsection}} % Show only subsection numbers, not section.subsection
+
+\begin{document}
+
+\huge
+\textbf{Practice Quiz 3 with Answers}
+\normalsize
+
+\paragraph{}Quiz 3 covers chapters 1 through 9. Please answer the following questions. Partial credit may be given for incomplete free response questions.
+
+\begin{enumerate}
+    \item A sentinel controlled loop is a type of event loop. But what about it makes it different? What are any limitations? \\
+    \textit{Both loops have an unknown number of iterations. But a sentinel-controlled loop uses a predetermined sentinel value to know when the loop is over, such as receiving a negative value when it's known that only positive values are permitted. A limitation is that the value or type of response used as the sentinel value cannot be used as a real value because you wouldn't be able to determine ``is this value the end of the list or is it a legitimate value to be considered''?} \\
+    \textit{Compare a sentinel-controlled loop to a loop which might ask the user for corrected information of the user provided something incorrect. That error checking loop might not run at all, or it could run of the first input was incorrect. Both run for an unpredictable amount of times but for different reasons.}
+
+    \item Given: \verb|a = True, b = False|, evaluate the following boolean instructions and indicate if they're true or false.
+    \begin{enumerate}
+        \item \verb|a and not b == (a or !a)| \textit{True}
+        \item \verb|not (a or b) == not(a) or not(b)| \textit{True, and the values of $a$ and $b$ don't matter here.}
+        \item \verb|b == 0| \textit{True}
+    \end{enumerate}
+
+    \item What are not goals of unit testing?
+    \begin{itemize}
+        \tick Test that the program runs fast enough to be used in a video game.
+        \tick Check that the documentation matches what a code snippet actually does.
+    \end{itemize}
+
+    \item Which expression is true approximately 66\% of the time?
+    \begin{itemize}
+        \tick \verb|random() < 0.66|
+    \end{itemize}
+
+    \item A statement which controls the execution of other statements:
+    \begin{itemize}
+        \tick control structure
+    \end{itemize}
+
+    \item Placing a decision inside of another:
+    \begin{itemize}
+        \tick nesting
+        \fail serialization \textit{- this refers to saving an instance of a data structure, like a class, to a file.}
+    \end{itemize}
+
+    \item Briefly describe how top-level design and prototyping differ. \\
+    \textit{Top-level design breaks up a problem into smaller and smaller pieces, possibly implemented as functions. Once all pieces are implemented, the project is likely done, unless there are any bugs. Prototyping completes only part of the project, that part is tested, more features are implemented, tested again, and the process repeats until eventually all features are implemented.}
+
+    \item List three ways you might use exception handling. \\
+    \textit{1. Ensure that the user entered the expected data type, such as Float or Integer from a string.\\2. Gracefully handle an error if the program wasn't able to load data from a file or save data to a file.\\3.Catch an error where invalid data might cause another function to have an error, such as trying to find the square root of a negative number.}
+
+    \item What might be a benefit of using a function even if it gets called only once? \\
+    \textit{A function has a name, and sometimes associating a name with a particular section of code helps convey the meaning or purpose behind it, make the project more readable.}
+
+\end{enumerate}
+
+\end{document}
