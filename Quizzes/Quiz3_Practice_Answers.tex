@@ -91,7 +91,7 @@
     \item Given: \verb|a = True, b = False|, evaluate the following boolean instructions and indicate if they're true or false.
     \begin{enumerate}
         \item \verb|a and not b == (a or !a)| \textit{True}
-        \item \verb|not (a or b) == not(a) or not(b)| \textit{True, and the values of $a$ and $b$ don't matter here.}
+        \item \verb|not (a or b) == not(a) and not(b)| \textit{True, and the values of $a$ and $b$ don't matter here. \textit{De Morgan's Law}}
         \item \verb|b == 0| \textit{True}
     \end{enumerate}
 
