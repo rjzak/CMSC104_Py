@@ -1,0 +1,122 @@
+% Copyright 2024 Richard J. Zak
+% richard.j.zak@gmail.com
+
+\documentclass[letter,10pt]{article}
+\usepackage[breaklinks]{hyperref}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={XYZ null null 1.00},    % disable zoom
+    pdftitle={Practice Quiz 4},    % title
+    pdfauthor={Richard Zak},     % author
+    pdfsubject={UMBC CMSC104 Problem Solving and Computer Programming},   % subject of the document
+    pdfkeywords={Computer Science, Programming, Problem Solving, CSEE}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=false,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\pagestyle{fancy}
+\usepackage[letterpaper, margin=1in]{geometry}
+\geometry{letterpaper}
+\usepackage{listings} % Syntax highlighing
+\usepackage{amsmath}
+\usepackage{parskip} % Disable initial indent
+\usepackage{color,soul} % Highligher
+\usepackage[normalem]{ulem} % Strikethrough with \sout{}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage[utf8]{inputenc}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} % Remove default underline from header package
+\rhead{CMSC 104 Section 01: Practice Quiz 4}
+%\rhead{}
+\lhead{\begin{picture}(0,0) \put(0,-10){\includegraphics[width=1.1cm]{../Images/UMBC-vertical}} \end{picture}}
+\cfoot{\thepage}
+\rfoot{\input{../semester}}
+\lfoot{CMSC 104 Section 01}
+\AtEndDocument{\vfill \footnotesize{Last modified: 20 November 2024}}
+\AtEndDocument{\rfoot{\input{../semester}}}
+\renewcommand\thesubsection{\arabic{subsection}} % Show only subsection numbers, not section.subsection
+
+\begin{document}
+
+\huge
+\textbf{Practice Quiz 4}
+\normalsize
+
+\paragraph{}Quiz 4 covers chapters 1 through 12. Please answer the following questions. Partial credit may be given for incomplete free response questions.
+
+\begin{enumerate}
+    \item Which of the following item types are mutable?
+    \begin{itemize}
+        \item List
+        \item Dictionary
+        \item Tuple
+        \item Class
+        \item Set
+        \item String
+    \end{itemize}
+    
+    \item What is the manner by which classes worth together, or how a program uses a class?
+    \begin{itemize}
+    	\item Encapsulation
+	\item Polymorphism
+	\item Inheritance
+	\item Interface
+    \end{itemize}
+    
+    \item Define encapsulation and describe why it's useful.
+    
+    \item Define polymorphism and describe why it's useful.
+    
+    \item Define inheritance and describe why it's useful.
+    
+    \item What are some similarities and differences between lists, sets, dictionaries, and tuples?
+    
+    \item Write a function which removes duplicate items from a list. Write a test function which ensures it works properly.
+    
+    \item When working with a class, it's perfectly fine to call functions which start with an underscore.
+    
+    \item When working with a class, it's usually not advisable to access the field members directly.
+    
+    \item A list must contain a minimum of one item.
+    
+    \item A list or a tuple must contain elements of the same type.
+    
+\end{enumerate}
+
+\end{document}

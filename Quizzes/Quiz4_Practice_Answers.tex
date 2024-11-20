@@ -1,0 +1,157 @@
+% Copyright 2024 Richard J. Zak
+% richard.j.zak@gmail.com
+
+\documentclass[letter,10pt]{article}
+\usepackage[breaklinks]{hyperref}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={XYZ null null 1.00},    % disable zoom
+    pdftitle={Practice Quiz 4 Answers},    % title
+    pdfauthor={Richard Zak},     % author
+    pdfsubject={UMBC CMSC104 Problem Solving and Computer Programming},   % subject of the document
+    pdfkeywords={Computer Science, Programming, Problem Solving, CSEE}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=false,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\pagestyle{fancy}
+\usepackage[letterpaper, margin=1in]{geometry}
+\geometry{letterpaper}
+\usepackage{listings} % Syntax highlighing
+\usepackage{amsmath}
+\usepackage{parskip} % Disable initial indent
+\usepackage{color,soul} % Highligher
+\usepackage[normalem]{ulem} % Strikethrough with \sout{}
+\usepackage{bbding} % For checkmark in itemize
+\newcommand*\tick{\item[\Checkmark]}
+\newcommand*\fail{\item[\XSolidBrush]}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage[utf8]{inputenc}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} % Remove default underline from header package
+\rhead{CMSC 104 Section 01: Practice Quiz 4 Answers}
+%\rhead{}
+\lhead{\begin{picture}(0,0) \put(0,-10){\includegraphics[width=1.1cm]{../Images/UMBC-vertical}} \end{picture}}
+\cfoot{\thepage}
+\rfoot{\input{../semester}}
+\lfoot{CMSC 104 Section 01}
+\AtEndDocument{\vfill \footnotesize{Last modified: 20 November 2024}}
+\AtEndDocument{\rfoot{\input{../semester}}}
+\renewcommand\thesubsection{\arabic{subsection}} % Show only subsection numbers, not section.subsection
+
+\begin{document}
+
+\huge
+\textbf{Practice Quiz 4 Answers}
+\normalsize
+
+\paragraph{}Quiz 4 covers chapters 1 through 12. Please answer the following questions. Partial credit may be given for incomplete free response questions.
+
+\begin{enumerate}
+    \item Which of the following item types are mutable?
+    \begin{itemize}
+        \tick List
+        \tick Dictionary
+        \fail Tuple
+        \tick Class
+        \tick Set
+        \fail String
+    \end{itemize}
+    
+    \item What is the manner by which classes worth together, or how a program uses a class?
+    \begin{itemize}
+	\tick Interface
+    \end{itemize}
+    
+    \item Define encapsulation and describe why it's useful. \\
+    \textit{Encapsulation links related data and functions/methods which are strongly related. This makes it easier to manage these related things by accessing them by a single variable, the class instance.}
+    
+    \item Define polymorphism and describe why it's useful. \\
+    \textit{Polymorphism enables a portion of code to call similar functions (the same interface) which actually calls very different class types. See Chapter 12's description of the Poker application, which allows the one program to update a graphical application or a command line application. In this instance, we have one set of code which gets to do two things - reducing the amount of code required to have this advanced functionality.}
+    
+    \item Define inheritance and describe why it's useful. \\
+    \textit{Inheritance allows for a class to be created which inherits functions/methods and variables of another class, the parent or super class. This allows for code reduce by objects, so a child class may use the data and functions of a parent class without having to reimplement or copy that code into the child class.}
+    
+    \item What are some similarities and differences between lists, sets, dictionaries, and tuples? \\
+    \textit{Similarities: all of these items are built-in Python types designed to contain various items. They can often be thought of as a collection of variables. Think of the Dice example in chapter 12.} \\
+    \textit{Differences: lists, sets, tuples are well-suited for items which are in order. 0, 1, 2, 3, etc. Sets are list lists but don't allow duplicates. Tuples are like lists but they cannot be changes. Dictionaries use strings to ``index'' into the structure, such as \texttt{my\_dict["foo"] = 42} vs. \texttt{my\_list[17] = 42}.}
+    
+    \item Write a function which removes duplicate items from a list. Write a test function which ensures it works properly.
+    \begin{lstlisting}[language=python]
+def remove_duplicates(some_list):
+    temp_data = []
+    for item in some_list:
+        if item not in temp_data:
+            temp_data.append(item)
+    
+    return temp_data
+
+def remove_duplicates_test():
+    list_with_duplicates = ['cat', 'dog', 'cat']
+    
+    duplicates_removed = remove_duplicates(list_with_duplicates)
+    
+    if duplicates_removed.count('cat') != 1:
+        print("Error, duplicate not removed!")
+        return
+    
+    if len(duplicates_removed) != 2:
+        print("List size should only have two items.")
+        return
+    
+    print("Tests passed.")
+    \end{lstlisting}
+    
+    This approach is more of a real-world example but is too easy.
+    \begin{lstlisting}[language=python]
+    def remove_duplicates(some_list):
+        return set(some_list)
+    \end{lstlisting}
+    
+    \item When working with a class, it's perfectly fine to call functions which start with an underscore. \textit{False. This could `break' the class instance.}
+    
+    \item When working with a class, it's usually not advisable to access the field members directly. \textit{True}
+    
+    \item A list must contain a minimum of one item. \textit{False. A list can be empty.}
+    
+    \item A list or a tuple must contain elements of the same type. \textit{False.}
+    
+\end{enumerate}
+
+\end{document}
