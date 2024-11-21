@@ -1,0 +1,161 @@
+% Copyright 2020-2024 Richard J. Zak
+% richard.j.zak@gmail.com
+
+\documentclass[letter,10pt]{article}
+\usepackage[breaklinks]{hyperref}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={XYZ null null 1.00},    % disable zoom
+    pdftitle={Classwork 9},    % title
+    pdfauthor={Richard Zak},     % author
+    pdfsubject={UMBC CMSC104 Problem Solving and Computer Programming},   % subject of the document
+    pdfkeywords={Computer Science, Programming, Problem Solving, CSEE}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=false,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\pagestyle{fancy}
+\usepackage[letterpaper, margin=1in]{geometry}
+\geometry{letterpaper}
+\usepackage{listings} % Syntax highlighing
+\usepackage{xcolor}
+\usepackage{parskip} % Disable initial indent
+\usepackage{color,soul} % Highligher
+\usepackage[normalem]{ulem} % Strikethrough with \sout{}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage[utf8]{inputenc}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} % Remove default underline from header package
+\rhead{CMSC 104 Section 01: Classwork 9}
+%\rhead{}
+\lhead{\begin{picture}(0,0) \put(0,-10){\includegraphics[width=1.1cm]{../../Images/UMBC-vertical}} \end{picture}}
+\cfoot{\thepage}
+\rfoot{\input{../../semester}}
+\lfoot{CMSC 104 Section 01}
+\AtEndDocument{\vfill \footnotesize{Last modified: 21 November 2024}}
+\AtEndDocument{\rfoot{\input{../../semester}}}
+\renewcommand\thesubsection{\arabic{subsection}} % Show only subsection numbers, not section.subsection
+
+\begin{document}
+    
+    \huge
+    \textbf{Classwork 9: To-Do List Re-Do}
+    \normalsize
+    \\ ~~ \\
+    \textbf{In-class Date: Monday 25 November} \\
+    \textbf{Due Date: Sunday 01 December}
+    
+    \section*{Objectives}
+    \paragraph{}A common theme in program design is to iterate upon the code you've written to make it better. Sometimes it's because you discover a better way to solve the problem. Or it can be a re-design after learning more about the language.
+    
+    \subsection*{Assignment}
+    \paragraph{}Starting with your code for Project 1, create a new to-do list application which includes a few of the topics we've learned about after that project. You have flexibility in the details, but the code should generally work the same, but is now more advanced. Include the following Python features in your new code:
+    \begin{itemize}
+        \item Class: the to-do list application should be a class, probably with the path to the file name as a parameter to the constructor.
+        \item Exceptions: catch exceptions so your program may gracefully handle any errors.
+        \item String parsing: add a new field to the to-do list item. It could be a category of your choice, but save the data such that this additional data isn't part of the to-do entry itself. This was extra credit in Project 1. Suggestion: use the Pipe character | to delineate to-do list entry vs. this categorical data. The pipe character is the vertical line above the return or enter key on most keyboards. Examples of this additional data: due date, entry date, priority, etc.
+    \end{itemize}
+    
+    \section*{Reminder}
+    \paragraph{}Assignments are your own effort. Do not share your code.
+    
+    \section*{Extra Credit}
+    \paragraph{}Add the following capabilities to your to-do list application:
+    \begin{itemize}
+        \item Use the graphics library so that the user may have a GUI file selection option instead of using the default file name.
+        \item Allow the user to specify the to-list file name on the command line when the user runs your script. See the example below.
+        \item Create a few unit tests which ensures the to-do list application works: add an item, remove an item. Ideally these should be in a separate .py file, and use the Python unit test framework. Read more about it at \url{https://docs.python.org/3/library/unittest.html}. See the example below.
+    \end{itemize}
+    
+    Accessing command line arguments when the script was run.
+    \begin{lstlisting}[language=python]
+# When a program is run, we can see how the program was run:
+import sys
+
+for arg in sys.argv:
+    print(arg)
+
+# sys.argv[0] is the name of the script
+# sys.argv[1] is the first argument provided to the script.
+# Example: ./my_script.py apples oranges
+# sys.argv[1] == "apples"
+# sys.argv[2] == "oranges"
+    \end{lstlisting}
+    
+    Python's \texttt{unittest} framework example.
+    \begin{lstlisting}[language=python]
+import unittest
+from proj1 import ToDoList # your exact import will look different
+
+class TestToDoList(unittest.TestCase):
+
+    # Create a separate function for functionality to be tested
+    def test_something(self):
+        todolist = ToDoList(...)
+        
+        # Some available functions from the unittest module.
+        # You don't need to use all of them, just ones which are appropriate.
+        self.assertTrue(...)
+        self.assertFalse(...)
+        self.assertEqual(...)
+        with self.assertRaises(...):
+            # intentionally raise an exception
+
+if __name__ == '__main__':
+    unittest.main()
+    \end{lstlisting}
+    
+    \section*{Grading Rubric}
+    \paragraph{}Script prints:
+    \begin{itemize}
+        \item Class use: 50 points.
+        \item Exceptions caught gracefully: 25 points.
+        \item Category saved for each to-do list entry: 25 points.
+        \item Extra Credit Unit test: +50 points
+        \item Extra Credit GUI file chooser: +10 points
+        \item Extra Credit command line file chooser: +10 points
+    \end{itemize}
+    
+    \section*{What to Submit}
+    \begin{itemize}
+        \item Your saved Python script.
+        \item Your extra credit script, if applicable.
+    \end{itemize}
+    
+\end{document}
