@@ -1,0 +1,159 @@
+% Copyright 2024 Richard J. Zak
+% richard.j.zak@gmail.com
+
+\documentclass[letter,10pt]{article}
+\usepackage[breaklinks]{hyperref}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={XYZ null null 1.00},    % disable zoom
+    pdftitle={Final Exam Review},    % title
+    pdfauthor={Richard Zak},     % author
+    pdfsubject={UMBC CMSC104 Problem Solving and Computer Programming},   % subject of the document
+    pdfkeywords={Computer Science, Programming, Problem Solving, CSEE}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=false,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\pagestyle{fancy}
+\usepackage[letterpaper, margin=1in]{geometry}
+\geometry{letterpaper}
+\usepackage{parskip} % Disable initial indent
+\usepackage{color,soul} % Highligher
+\usepackage[normalem]{ulem} % Strikethrough with \sout{}
+\usepackage{placeins} % FloatBarrier
+\usepackage[utf8]{inputenc}
+\usepackage{listings} % Syntax highlighing
+
+% arrays table
+\usepackage{multirow,tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\renewcommand{\arraystretch}{2}
+
+% header in tables
+\newcommand*{\thead}[1]{\multicolumn{1}{c}{\bfseries #1}}
+
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} % Remove default underline from header package
+\rhead{CMSC 104 Section 01: Final Exam Review}
+%\rhead{}
+\lhead{\begin{picture}(0,0) \put(0,-10){\includegraphics[width=1.1cm]{../Images/UMBC-vertical}} \end{picture}}
+\cfoot{\thepage}
+\rfoot{\input{../semester}}
+\lfoot{CMSC 104 Section 01}
+\AtEndDocument{\vfill \footnotesize{Last modified: 03 December 2024}}
+\AtEndDocument{\rfoot{\input{../semester}}}
+\renewcommand\thesubsection{\arabic{subsection}} % Show only subsection numbers, not section.subsection
+\title{Final Exam Review}
+
+\begin{document}
+%\maketitle
+\huge
+\textbf{Final Exam Review}
+\normalsize
+
+\tableofcontents
+
+\section{Computer Components}
+\paragraph{}A computer is a device which performs general-purpose computation on numbers. It is through the meaning we give those numbers that data is represented and ultimately useful. A computer takes many forms: cell phones, laptops, desktops, servers, control systems in automobiles \& aircraft, video game consoles, smart watches, and many more. They vary drastically in price, from a \$35 Raspberry Pi\footnote{Raspberry Pi website: \url{https://www.raspberrypi.org/}}, which is about the size of a credit card and geared for students \& hobbyists, to multi-million dollar government-operated supercomputers\footnote{\url{https://en.wikipedia.org/wiki/Supercomputer}}.
+
+\subsection{Storage}
+\paragraph{}Storage on a computer is thought of as long or short-term storage.
+\begin{itemize}
+    \item Short-term (or ephemeral) storage: \hyperref[sec:ram]{RAM} is gone when the computer turns off.
+    \item Long-term (or permanent) storage: hard drives, removable media, and other devices which hold data even when the computer is powered off, or when removed from the computer.
+\end{itemize}
+
+\paragraph{}Long-term storage can be a hard drive, USB thumb drive, CD or DVD optical disc, floppy disks, or tape back-up systems. \textit{Short-term storage (memory) is ALWAYS faster}, and the long-term storage devices are ranked from fastest to slowest:
+\begin{enumerate}
+    \item Hard drive (solid state, or SSD)
+    \item Hard drive (spinning magnetic disk, or HDD)
+    \item USB thumb drive
+    \item CD or DVD optical drive
+    \item Tape
+\end{enumerate}
+
+\paragraph{}Computer memory and these long-term storage devices provide \texttt{random access}, meaning it is possible to read any single byte from any location without having to read \texttt{all} of the preceding bytes. The exception: tape back-up. To retrieve some data at the end of the tape, the entirety of the tape's contents must be read! This, and because the tape systems are slow, makes reading from tape data very slow.
+
+\subsection{Input/Output Devices}
+\paragraph{}Simply put, input devices receive data, and output devices send data to the user. Examples:
+\begin{itemize}
+    \item Input: keyboard, mouse, scanner, webcam
+    \item Output: monitor, graphics card, printer
+    \item Input \& Output: network card, audio card (audio out to speakers, microphone input), USB devices
+\end{itemize}
+
+\subsection{Central Processing Unit (CPU)}
+\paragraph{}Made up of billions of transistors yet taking up less space than a fingernail, the modern CPU can be thought of as the ``brain'' of the computer. It provides instruction to the rest of the devices, and ensures that the devices communicate with each other.
+
+\paragraph{}Processors have memory of their own, called registers and cache. These are the fastest forms of memory on a computer, though management of this memory is solely managed by the processor itself.
+
+\subsection{Random Access Memory}\label{sec:ram}
+\paragraph{}System memory is in the form of memory sticks connected to the motherboard, sometimes permanently connected. These circuits are fast, temporary storage, and are used by the operating system to keep the computer running, and by running applications to perform the tasks asked of them. More RAM in a computer generally makes the computer \texttt{seem} faster, as more things can be done without having to temporarily save data to disk. This is done so that the computer may function even when the system memory is exhausted, but since hard drives are much slower than RAM, it seems to take longer to use applications when this happens.
+
+\paragraph{}What makes it \textbf{random}? Data in memory may be accessed directly. Like opening a book to a specific page versus having to open an ancient scroll and continuously search forward until the desired data is found.
+
+\section{Operating Systems}
+\paragraph{}The operating system is a program which manages the computer's functionality on behalf of the user, and is the user's interface to the hardware. The operating system manages the devices to ensure sound comes out of the speakers from a music player, for example.
+
+\section{Semantics vs Syntax}
+\paragraph{Semantics} The meaning or purpose of a phrase, sentence, of segment of code is referred to as semantics. Example: \textit{The dog caught the ball} vs. \textit{The ball walked the dog.}. The second example doesn't make sense.
+
+\paragraph{Syntax} The manner in which code or human language is structured is syntax. Example: \textit{The dog caught the ball.} vs. \textit{dog ball caught the the}.
+
+\paragraph{}Semantics vs. syntax are based on the language. A pattern used by one language won't likely be valid for another language, and the same is true of programming languages.
+
+\paragraph{Note:}The Python interpreter (and compilers) will catch syntax errors. Semantic errors, also sometimes called bugs\footnote{Computer bugs got their name from a time in September 1947, where a computer problem was caused by an actual insect. \url{https://www.atlasobscura.com/places/grace-hoppers-bug}.}, are not caught automatically. You have to identify them, and figure out how to resolve them. If someone could invent a semantic error detector which works with a compiler, that person would be a billionaire.
+
+\section{Algorithms}
+\paragraph{}An algorithm is a set of instructions which is clear \& easy to understand no matter who reads it, and has a small (or manageable) amount of steps. It is clear at each step what must be done, without assumptions or confusion.
+
+\paragraph{}A professor at Harvard University made a video which demonstrates this clearly by discussing how to make a peanut butter and jelly sandwich: \url{https://youtu.be/okkIyWhN0iQ}. Note that some steps, like ``open the bag'', or how to open the bag of bread, is missed because some people \textit{assumed} aspects of that step based on prior knowledge. A good algorithm wouldn't have an assumption, each step would be clear. If an assumption can't be avoided, it would be documented somewhere in the code. An algorithm should pay attention to deals, and handle unexpected inputs accordingly.
+
+\paragraph{}A clear and concise definition:
+\begin{quote}
+An algorithm is a finite set of unambiguous, executable instructions which directs a terminating activity.
+\end{quote}
+
+\section{Pseudocode}
+\paragraph{}To help with planning how a program, or function might look like, \texttt{pseudocode} is used because it hides the issues pertaining to C syntax. Separating out semantics from syntax can be helpful in planning how the code will look by first focusing on what it's supposed to do. It can also be used to explain an algorithm to someone who isn't familiar with code. Example:
+
+\begin{verbatim}
+    DISPLAY "How many grades?"
+    READ <numberOfGrades>
+    counter = 0
+    sum = 0
+    WHILE (<counter> < <numberOfGrades>)
+        READ <grade>
+        <sum> = <sum> + <grade>
+    END_WHILE
+    average = <sum> / <numberOfGrades>
+    DISPLAY "Class average", <average>
+\end{verbatim}
+
+\section{Programming in Python}
+
+\subsection{Variables \& Data Types}
+
+\subsection{Loops}
+
+\subsection{Conditionals}
+
+\subsection{Lists, Sets, Tuples, \& Dictionaries}
+
+\subsection{Functions}
+
+\subsection{Classes}
+
+\section{Software Design}
+
+\end{document}

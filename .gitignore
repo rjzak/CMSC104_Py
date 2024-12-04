@@ -4,5 +4,6 @@
 *.o
 *.out
 *.pdf
+*.toc
 *~
 .DS_Store
