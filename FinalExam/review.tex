@@ -15,8 +15,8 @@
     pdfsubject={UMBC CMSC104 Problem Solving and Computer Programming},   % subject of the document
     pdfkeywords={Computer Science, Programming, Problem Solving, CSEE}, % list of keywords
     pdfnewwindow=true,      % links in new PDF window
-    colorlinks=false,       % false: boxed links; true: colored links
-    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,          % color of internal links (change box color with linkbordercolor)
     citecolor=green,        % color of links to bibliography
     filecolor=magenta,      % color of file links
     urlcolor=cyan           % color of external links
@@ -50,7 +50,7 @@
 \cfoot{\thepage}
 \rfoot{\input{../semester}}
 \lfoot{CMSC 104 Section 01}
-\AtEndDocument{\vfill \footnotesize{Last modified: 03 December 2024}}
+\AtEndDocument{\vfill \footnotesize{Last modified: 08 December 2024}}
 \AtEndDocument{\rfoot{\input{../semester}}}
 \renewcommand\thesubsection{\arabic{subsection}} % Show only subsection numbers, not section.subsection
 \title{Final Exam Review}
@@ -103,7 +103,7 @@
 \paragraph{}What makes it \textbf{random}? Data in memory may be accessed directly. Like opening a book to a specific page versus having to open an ancient scroll and continuously search forward until the desired data is found.
 
 \section{Operating Systems}
-\paragraph{}The operating system is a program which manages the computer's functionality on behalf of the user, and is the user's interface to the hardware. The operating system manages the devices to ensure sound comes out of the speakers from a music player, for example.
+\paragraph{}The operating system is a program which manages the computer's functionality on behalf of the user, and is the user's interface to the hardware. The operating system manages the devices to ensure sound comes out of the speakers from a music player, for example, as well as runs programs on behalf of the user. If the CPU is the ``brain'' of the hardware, the operating system is the ``brain'' of the software.
 
 \section{Semantics vs Syntax}
 \paragraph{Semantics} The meaning or purpose of a phrase, sentence, of segment of code is referred to as semantics. Example: \textit{The dog caught the ball} vs. \textit{The ball walked the dog.}. The second example doesn't make sense.
@@ -112,7 +112,7 @@
 
 \paragraph{}Semantics vs. syntax are based on the language. A pattern used by one language won't likely be valid for another language, and the same is true of programming languages.
 
-\paragraph{Note:}The Python interpreter (and compilers) will catch syntax errors. Semantic errors, also sometimes called bugs\footnote{Computer bugs got their name from a time in September 1947, where a computer problem was caused by an actual insect. \url{https://www.atlasobscura.com/places/grace-hoppers-bug}.}, are not caught automatically. You have to identify them, and figure out how to resolve them. If someone could invent a semantic error detector which works with a compiler, that person would be a billionaire.
+\paragraph{Note:}The Python interpreter (and compilers) will catch syntax errors. Semantic errors, also sometimes called bugs\footnote{Computer bugs got their name from a time in September 1947, where a computer problem was caused by an actual insect. \url{https://www.atlasobscura.com/places/grace-hoppers-bug}.}, are not caught automatically. You have to identify them, and figure out how to resolve them. If someone could invent a semantic error detector which works with a compiler, that person would be a billionaire. Since the computer has no knowledge of what you the programmer is trying to do, or the problem being solved, only the human can notice the semantic error.
 
 \section{Algorithms}
 \paragraph{}An algorithm is a set of instructions which is clear \& easy to understand no matter who reads it, and has a small (or manageable) amount of steps. It is clear at each step what must be done, without assumptions or confusion.
@@ -125,7 +125,7 @@ An algorithm is a finite set of unambiguous, executable instructions which direc
 \end{quote}
 
 \section{Pseudocode}
-\paragraph{}To help with planning how a program, or function might look like, \texttt{pseudocode} is used because it hides the issues pertaining to C syntax. Separating out semantics from syntax can be helpful in planning how the code will look by first focusing on what it's supposed to do. It can also be used to explain an algorithm to someone who isn't familiar with code. Example:
+\paragraph{}To help with planning how a program, or function might look like, \texttt{pseudocode} is used because it hides the issues pertaining to syntax. Separating out semantics from syntax can be helpful in planning how the code will look by first focusing on what it's supposed to do. It can also be used to explain an algorithm to someone who isn't familiar with code. Example:
 
 \begin{verbatim}
     DISPLAY "How many grades?"
@@ -141,19 +141,103 @@ An algorithm is a finite set of unambiguous, executable instructions which direc
 \end{verbatim}
 
 \section{Programming in Python}
+\paragraph{}Python is an interpreted language, which means that you have to have Python installed to run (or execute) a Python application (or script). This is in contrast to compiled languages, such as C/C++, Fortran, Go, Rust, which contain code which are compiled into a stand-alone application. The person running a program which is compiled does not need the compiler installed to run the program.
 
 \subsection{Variables \& Data Types}
+\paragraph{}Data is stored in a variable, much like in algebra. The variable represents some value, such as $x = 5$ means that referencing $x$ will result in the variable being treated as if it were the number five, until the value is altered. In addition to the value, a variable also has a data type. Some basic data types are:
+
+\begin{itemize}
+    \item Integer: a numeric value which does not have value after the decimal point. Example: $3$.
+    \item Float: a floating point value is a number which does have value after the decimal point. Example: $3.141592653$.
+    \item Character: a value representing one character, such as ``A''.
+    \item String: an array or sequence of many characters, such as ``Apples are delicious''.
+    \item Boolean: a value which represents only True or False.
+\end{itemize}
+
+\subsection{Boolean Logic}
+\paragraph{}Boolean expressions evaluate to \verb|True| or \verb|False|. A simple expression might be \verb|x > 0|, which is true if $x = 9$, but false if $x = -30$, for example. Using keywords \verb|and|, \verb|or|, and \verb|not|, two or more expressions may be combined into larger, more complex expressions. These expressions may be used with loops and conditional statements.
+
+\paragraph{}Boolean algebra examples:
+\begin{itemize}
+    \item Anything \verb|or|'d with true is true. \verb|a or true == true|.
+    \item Both \verb|and| and \verb|or| distribute. \verb|a or (b and c) == (a or b) and (a or c)|
+    \item Double negatives cancel out: \verb|not(not a) == a|
+    \item DeMorgan's law: \\
+        \verb|not(a or b) == (not a) and (not b)| \\
+        \verb|not(a and b) == (not a) or (not b)|
+\end{itemize}
 
 \subsection{Loops}
+\paragraph{}Code is executed by three basic patterns:
+\begin{enumerate}
+    \item Sequence: code is run in the order it's presented in the source code (or script), top to bottom.
+    \item Repetition: code can be repeatedly run without having to type it out several times, typically in a loop but can also be a recursive function.
+    \item Selection or Branching: decisions can be made so that some part of the code may or may not be run, or there may be sections where it's one section \textit{or} another section, based on some criteria.
+\end{enumerate}
+
+\paragraph{}Loops are a way to have the same code run for several \textit{iterations}. There are several types of loops depending on certain criteria.
+\begin{itemize}
+    \item Definitive loop: A loop, typically using the \verb|for| keyword, where it is known a head of time how many iterations the loop will have. Maybe it's to average the scores of 10 grades, or to iterate over all the elements in a list.
+    \item Indefinite loop: A loop, typically using the \verb|while| keyword, where it is not known how many iterations the loop will have. Maybe ten, maybe a thousand, maybe zero. An example might be input validation, where you ask the user to correct invalid input, but don't need to seek correction if the user entered correct data the first time.
+    \item Sentinel loop: A special case for indefinite loops, where there will be some unknown amount of data being collected, but a special case of the data is a signal to end the loop, and is not a piece of data. An example might be calculating a class average, where all positive values are accepted as grades, but a negative value instead means the loop is finished.
+\end{itemize}
+
+\paragraph{}Sometimes, it's necessary to exit a loop early, which uses the \verb|break| statement, or to skip an iteration with the \verb|continue| statement. Break \& continue are often used when there's an error, or sometimes Break is used when no further computation is needed to solve the task at hand.
 
 \subsection{Conditionals}
+\paragraph{}Sometimes, depending on some condition(s), code should or should not run. This decision takes the form of an \verb|if| statement. There may be a code segment which runs \verb|if| a condition is true, and there might be other code which runs after the \verb|else| keyword if the condition in the \verb|if| was false. The keyword \verb|elif| is a shortcut for \verb|else if|, allowing the construction of a conditional block with several conditions (not just ``this'' or ``that'').
 
 \subsection{Lists, Sets, Tuples, \& Dictionaries}
+\paragraph{}Collections of data accessible under one variable name allows for easier access to several items. Lists, Sets, and Tuples allow for variables to be stored and accessed by \textit{indexing} into it. So a list \verb|x = [0] * 100| contains one hundred zeros, which is manageable, unlike having to store a zero in one hundred separate variables. The difference between them is that Sets only allow unique items, tuples are immutable (read-only), and lists have no restrictions.
+
+\paragraph{}Dictionaries can be thought of as lists which allow indexing by a string instead of an integer. They are ideal for non-sequential data, and can be faster for accessing an element.
+
+\paragraph{}For all of these types (lists, sets, tuples, dictionaries), the contained data can be anything: more lists, sets, tuples, classes, etc. A ``list of lists'' might be a way to implement a matrix, for example.
 
 \subsection{Functions}
+\paragraph{}Functions are reusable segments of code which serve a few purposes:
+\begin{itemize}
+    \item Code reuse: functions can be implemented for code which gets uses a lot, reducing the lines of code and making the project easier to manage. If some part of this frequent code had to be changed for some reason, if it's in a function, the change theoretically only has to be made in one place.
+    \item Code sharing: \verb|print| is a function used quite frequently, and yet we don't have to know how it works, and we didn't have to write it. Code can be shared so that others may use classes \& functions created by others without having to learn exactly how it works to use. It's like using a laptop without needing the knowledge to build one yourself. This results in more time to work on the problem you're trying to solve instead of re-solve problems already figured out.
+    \item Readability: code can get rather complicated. In some cases, it might be beneficial to pull out some code segment, move it to its own function (which has a name), so that the code is a little more understandable. This doesn't decrease the lines of code, but \textit{may} improve understandability.
+\end{itemize}
+
+\paragraph{}Finally, functions themselves are treated as variables in Python, such that a function may be a parameter to a function. This was discussed in the context of sorting, allowing for the sorting of a list of tuples or list of classes. Which element (in the tuple or class) is to be used as the basis for sorting the list? A function as a parameter can solve this, allowing the use of Python's built-in \verb|sort| function instead of having to recreate it.
 
 \subsection{Classes}
+\paragraph{}Classes can be thought of a software object to model something, such that this ``something'' has data (or attributes or characteristics) and functions/methods (things it \textit{does}). There are a few class-related concepts to remember:
+
+\begin{itemize}
+    \item Encapsulation: Encapsulation links related data and functions/methods which are strongly related. This makes it easier
+to manage these related things by accessing them by a single variable, the class instance. It also serves to provide a usable object type to the developer and hide implementation details, something the developer using the class doesn't need to know about (and may be confusing).
+    \item Polymorphism: Polymorphism enables a portion of code to call similar functions (the same interface) which actually
+calls very different class types. See Chapter 12’s description of the Poker application, which allows
+the one program to update a graphical application or a command line application. In this instance, we
+have one set of code which gets to do two things - reducing the amount of code required to have this
+advanced functionality.
+    \item Interface: The interface is an agreed-upon set of functions/methods and data types used between two or more classes for interaction. This allows for interaction between different, possibly unknown, types and helps with the building of robust software. \href{https://en.wikipedia.org/wiki/API}{Wikipedia: API}.
+    \item Inheritance: Inheritance allows for a class to be created which inherits functions/methods and variables of another
+class, the parent or super class. This allows for code reduce by objects, so a child class may use the
+data and functions of a parent class without having to reimplement or copy that code into the child
+class.
+\end{itemize}
+
+\paragraph{}Classes have functions, sometimes called ``methods'', which represent what a class can do, and how the data is manipulated though the course of the program running. Some functions are special:
+
+\begin{itemize}
+    \item Constructor: \verb|def __init__(self...)| creates the class, and may take parameters needed to build the class' initial state.
+    \item Accessor (getter): functions which access some internal data of the class, but don't allow changes.
+    \item Mutator (setter): functions which allow changes to the internal data of the class, but often have \verb|if| statements to ensure the data is valid, and that the rest of the class' internal data is also updated accordingly, if needed.
+    \item Private: functions which begin with an underscore are considered private to the function and should not be accessed by the developer using the function. These functions may change the class' internal state in an inconsistent way if used by functions other than the class' public functions.
+\end{itemize}
 
 \section{Software Design}
+\paragraph{}Designing software is a complicated task, and there are many ways to do this. The decision usually comes down to preference, though the nature of the project or the problem being solved may dictate a style over another.
+
+\begin{itemize}
+    \item Top-Down: Work on the program's starting point first, breaking the problem into smaller pieces and gradually implementing \& connecting the pieces until the project works.
+    \item Bottom-Up: Work on the small items first, gradually working up to the main program.
+    \item Prototyping: Work on parts of the program, keeping the program functioning though incomplete. Fill in the gaps as development progresses. Start with a much easier goal and fewer features, test that it works, add more features.
+\end{itemize}
 
 \end{document}
