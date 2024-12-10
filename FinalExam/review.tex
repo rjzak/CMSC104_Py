@@ -50,7 +50,7 @@
 \cfoot{\thepage}
 \rfoot{\input{../semester}}
 \lfoot{CMSC 104 Section 01}
-\AtEndDocument{\vfill \footnotesize{Last modified: 08 December 2024}}
+\AtEndDocument{\vfill \footnotesize{Last modified: 09 December 2024}}
 \AtEndDocument{\rfoot{\input{../semester}}}
 \renewcommand\thesubsection{\arabic{subsection}} % Show only subsection numbers, not section.subsection
 \title{Final Exam Review}
@@ -75,11 +75,11 @@
 
 \paragraph{}Long-term storage can be a hard drive, USB thumb drive, CD or DVD optical disc, floppy disks, or tape back-up systems. \textit{Short-term storage (memory) is ALWAYS faster}, and the long-term storage devices are ranked from fastest to slowest:
 \begin{enumerate}
-    \item Hard drive (solid state, or SSD)
-    \item Hard drive (spinning magnetic disk, or HDD)
-    \item USB thumb drive
+    \item Hard drive (solid state disk or ``SSD'')
+    \item Hard drive (spinning magnetic disk or ``HDD'')
+    \item USB thumb/flash drive
     \item CD or DVD optical drive
-    \item Tape
+    \item Tape - slow, but that's fine for backing up data since it's seldom used (hopefully)
 \end{enumerate}
 
 \paragraph{}Computer memory and these long-term storage devices provide \texttt{random access}, meaning it is possible to read any single byte from any location without having to read \texttt{all} of the preceding bytes. The exception: tape back-up. To retrieve some data at the end of the tape, the entirety of the tape's contents must be read! This, and because the tape systems are slow, makes reading from tape data very slow.
@@ -154,6 +154,42 @@ An algorithm is a finite set of unambiguous, executable instructions which direc
     \item Boolean: a value which represents only True or False.
 \end{itemize}
 
+\FloatBarrier
+\subsection{Mathematical Operations}
+\paragraph{}Math operations in Python (and other programming languages) are processed in a similar manner was algebra. There is an order of operations, from first to last:
+
+\begin{enumerate}
+    \item Anything in parenthesis, inner most parentheses to outer.
+    \item Exponents
+    \item Multiplication, division, modulo in order from left to right.
+    \item Addition \& subtraction, in order from left to right
+    \item Assignment, with the expression on the right being stored in the variable on the left.
+\end{enumerate}
+
+\begin{figure}[htbp]
+\centering
+\begin{tabular}{ c c c }
+ Operator & Description & Example \\
+ \hline 
+ **    & Exponentiation & \verb|2**4 == 16| \\
+ $*$ & Multiplication & $3 * 5 = 15$ \\  
+ /     & Division & $15 / 2 = 7.50$ \\
+ //    & Integer division & $15 / 2 = 7$ \\
+ \%  & Modulo (remainder) & $15 \% 2 = 1$ \\
+ +    & Addition & $5 + 10 = 15$ \\
+ -    & Subtraction & $5 - 10 = -5$
+\end{tabular}
+\caption{Python's Numeric Operators}
+\end{figure}
+
+\paragraph{}Python's \verb|math| library has several math operations, including but not limited to:
+\begin{itemize}
+    \item \verb|math.sqrt()|: square root
+    \item \verb|math.sin()|: sine function using radians
+    \item \verb|math.cos()|: cosine function using radians
+    \item \verb|math.log()|: base 10 logarithm
+\end{itemize}
+
 \subsection{Boolean Logic}
 \paragraph{}Boolean expressions evaluate to \verb|True| or \verb|False|. A simple expression might be \verb|x > 0|, which is true if $x = 9$, but false if $x = -30$, for example. Using keywords \verb|and|, \verb|or|, and \verb|not|, two or more expressions may be combined into larger, more complex expressions. These expressions may be used with loops and conditional statements.
 
@@ -179,7 +215,9 @@ An algorithm is a finite set of unambiguous, executable instructions which direc
 \begin{itemize}
     \item Definitive loop: A loop, typically using the \verb|for| keyword, where it is known a head of time how many iterations the loop will have. Maybe it's to average the scores of 10 grades, or to iterate over all the elements in a list.
     \item Indefinite loop: A loop, typically using the \verb|while| keyword, where it is not known how many iterations the loop will have. Maybe ten, maybe a thousand, maybe zero. An example might be input validation, where you ask the user to correct invalid input, but don't need to seek correction if the user entered correct data the first time.
-    \item Sentinel loop: A special case for indefinite loops, where there will be some unknown amount of data being collected, but a special case of the data is a signal to end the loop, and is not a piece of data. An example might be calculating a class average, where all positive values are accepted as grades, but a negative value instead means the loop is finished.
+    \begin{itemize}
+        \item Sentinel loop: A special case for indefinite loops, where there will be some unknown amount of data being collected, but a special case of the data is a signal to end the loop, and is not a piece of data. An example might be calculating a class average, where all positive values are accepted as grades, but a negative value instead means the loop is finished.
+    \end{itemize}
 \end{itemize}
 
 \paragraph{}Sometimes, it's necessary to exit a loop early, which uses the \verb|break| statement, or to skip an iteration with the \verb|continue| statement. Break \& continue are often used when there's an error, or sometimes Break is used when no further computation is needed to solve the task at hand.
@@ -228,7 +266,24 @@ class.
     \item Constructor: \verb|def __init__(self...)| creates the class, and may take parameters needed to build the class' initial state.
     \item Accessor (getter): functions which access some internal data of the class, but don't allow changes.
     \item Mutator (setter): functions which allow changes to the internal data of the class, but often have \verb|if| statements to ensure the data is valid, and that the rest of the class' internal data is also updated accordingly, if needed.
+    \item Methods: functions which allow the class to ``do'' something related to the purpose of the class.
     \item Private: functions which begin with an underscore are considered private to the function and should not be accessed by the developer using the function. These functions may change the class' internal state in an inconsistent way if used by functions other than the class' public functions.
+\end{itemize}
+
+\subsection{Modules}
+\paragraph{}Python has several built-in \textit{modules}, such as \verb|math|, \verb|sys|, and many others. Python can also access elements from other Python files through this module system. For example, if you had a class called \verb|Grades| in a file called \verb|school.py|, a Python file in the same directory could access that class by first importing the class \verb|from school import Grades|, or by with \verb|import school|, and later using \verb|school.Grades| to call the class' constructor.
+
+\paragraph{}Python has a rich ecosystem of third-party modules created by people around the world, and they are usually listed on \url{https://pypi.org}. Python has a tool called \verb|pip| which makes it easy to install modules from PyPI.
+
+\subsection{Testing}
+\paragraph{}Some say code doesn't work until it's tested and found to be correct. Testing in this case refers to unit tests, which have some sample input for a function, some expected output from a function, and ensure the function under test returns the expected output. A proper test shows an error message if the expected and received data returned aren't a match.
+
+\paragraph{}Unit tests are especially helpful for a few reasons:
+\begin{itemize}
+    \item Unit tests ensure that the function being tested works correctly. This assumes that the function is being tested with a few input types, including invalid inputs to test that the function has an error when it should.
+    \item Having unit tests can help ensure that a program still works properly when a big change as been made (that nothing has broken in the process of development).
+    \item When working on a team, unit tests can ensure that new code contributions don't break the project.
+    \item Often, projects use third-party modules, and unit tests can ensure that updates to these modules don't break the project.
 \end{itemize}
 
 \section{Software Design}
