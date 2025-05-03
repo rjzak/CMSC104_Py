@@ -50,7 +50,7 @@
 \cfoot{\thepage}
 \rfoot{\input{../semester}}
 \lfoot{CMSC 104 Section 01}
-\AtEndDocument{\vfill \footnotesize{Last modified: 09 December 2024}}
+\AtEndDocument{\vfill \footnotesize{Last modified: 03 May 2025}}
 \AtEndDocument{\rfoot{\input{../semester}}}
 \renewcommand\thesubsection{\arabic{subsection}} % Show only subsection numbers, not section.subsection
 \title{Final Exam Review}
@@ -64,7 +64,9 @@
 \tableofcontents
 
 \section{Computer Components}
-\paragraph{}A computer is a device which performs general-purpose computation on numbers. It is through the meaning we give those numbers that data is represented and ultimately useful. A computer takes many forms: cell phones, laptops, desktops, servers, control systems in automobiles \& aircraft, video game consoles, smart watches, and many more. They vary drastically in price, from a \$35 Raspberry Pi\footnote{Raspberry Pi website: \url{https://www.raspberrypi.org/}}, which is about the size of a credit card and geared for students \& hobbyists, to multi-million dollar government-operated supercomputers\footnote{\url{https://en.wikipedia.org/wiki/Supercomputer}}.
+\paragraph{}A computer is a device which performs general-purpose computation on numbers. A computer is ``general purpose'' because the same machine may be used for different purposes: video games, communication (email, messaging), home banking, business purposes (spreadsheets, databases, etc), industrial/manufacturing, etc. A small computer could be used at home to browse the internet, or to control a pump for a water system.
+
+\paragraph{}Regarding numbers, it is through the meaning we give those numbers that they become data, and ultimately become useful. A computer takes many forms: cell phones, laptops, desktops, servers, control systems in automobiles \& aircraft, video game consoles, smart watches, and many more. They vary drastically in price, from a \$35 Raspberry Pi\footnote{Raspberry Pi website: \url{https://www.raspberrypi.org/}}, which is about the size of a credit card and geared for students \& hobbyists, to multi-million dollar government-operated supercomputers\footnote{\url{https://en.wikipedia.org/wiki/Supercomputer}}.
 
 \subsection{Storage}
 \paragraph{}Storage on a computer is thought of as long or short-term storage.
@@ -95,7 +97,7 @@
 \subsection{Central Processing Unit (CPU)}
 \paragraph{}Made up of billions of transistors yet taking up less space than a fingernail, the modern CPU can be thought of as the ``brain'' of the computer. It provides instruction to the rest of the devices, and ensures that the devices communicate with each other.
 
-\paragraph{}Processors have memory of their own, called registers and cache. These are the fastest forms of memory on a computer, though management of this memory is solely managed by the processor itself.
+\paragraph{}Processors have memory of their own, called registers and cache. These are the fastest forms of memory on a computer, though management of this memory is solely managed by the processor itself and the size of this memory is rather small compared to the RAM available on most systems.
 
 \subsection{Random Access Memory}\label{sec:ram}
 \paragraph{}System memory is in the form of memory sticks connected to the motherboard, sometimes permanently connected. These circuits are fast, temporary storage, and are used by the operating system to keep the computer running, and by running applications to perform the tasks asked of them. More RAM in a computer generally makes the computer \texttt{seem} faster, as more things can be done without having to temporarily save data to disk. This is done so that the computer may function even when the system memory is exhausted, but since hard drives are much slower than RAM, it seems to take longer to use applications when this happens.
@@ -106,9 +108,9 @@
 \paragraph{}The operating system is a program which manages the computer's functionality on behalf of the user, and is the user's interface to the hardware. The operating system manages the devices to ensure sound comes out of the speakers from a music player, for example, as well as runs programs on behalf of the user. If the CPU is the ``brain'' of the hardware, the operating system is the ``brain'' of the software.
 
 \section{Semantics vs Syntax}
-\paragraph{Semantics} The meaning or purpose of a phrase, sentence, of segment of code is referred to as semantics. Example: \textit{The dog caught the ball} vs. \textit{The ball walked the dog.}. The second example doesn't make sense.
+\paragraph{Semantics} The meaning or purpose of a phrase, sentence, of segment of code is referred to as semantics. Example: \textit{The dog caught the ball} vs. \textit{The ball walked the dog.}. The second example doesn't make sense, despite following the common form of Subject Verb Object. A dog would catch a ball, but a ball doesn't do anything to a dog.
 
-\paragraph{Syntax} The manner in which code or human language is structured is syntax. Example: \textit{The dog caught the ball.} vs. \textit{dog ball caught the the}.
+\paragraph{Syntax} The manner in which code or human language is structured is syntax. Example: \textit{The dog caught the ball.} vs. \textit{dog ball caught the the}. Here the words are in a random order (whereas the prior example was in the correct order but was still non-sense).
 
 \paragraph{}Semantics vs. syntax are based on the language. A pattern used by one language won't likely be valid for another language, and the same is true of programming languages.
 
@@ -177,11 +179,14 @@ An algorithm is a finite set of unambiguous, executable instructions which direc
  //    & Integer division & $15 / 2 = 7$ \\
  \%  & Modulo (remainder) & $15 \% 2 = 1$ \\
  +    & Addition & $5 + 10 = 15$ \\
- -    & Subtraction & $5 - 10 = -5$
+ -    & Subtraction & $5 - 10 = -5$ \\
+ += & Increment (add to a variable) & $a += 3$ \\
+ -=  & Decrement (subtract from a variable) & $a -= 3$
 \end{tabular}
 \caption{Python's Numeric Operators}
 \end{figure}
 
+\FloatBarrier
 \paragraph{}Python's \verb|math| library has several math operations, including but not limited to:
 \begin{itemize}
     \item \verb|math.sqrt()|: square root
@@ -221,6 +226,9 @@ An algorithm is a finite set of unambiguous, executable instructions which direc
 \end{itemize}
 
 \paragraph{}Sometimes, it's necessary to exit a loop early, which uses the \verb|break| statement, or to skip an iteration with the \verb|continue| statement. Break \& continue are often used when there's an error, or sometimes Break is used when no further computation is needed to solve the task at hand.
+
+\subsubsection{Recursion}
+\paragraph{}A function which calls itself is a type of loop, though without the normal loop-related keywords. The basic structure of recursive functions is to have a value which decreased (or shrinks, if it's a list), and to have a hard-coded stopping condition (where the recursive function returns a value instead of calling itself again).
 
 \subsection{Conditionals}
 \paragraph{}Sometimes, depending on some condition(s), code should or should not run. This decision takes the form of an \verb|if| statement. There may be a code segment which runs \verb|if| a condition is true, and there might be other code which runs after the \verb|else| keyword if the condition in the \verb|if| was false. The keyword \verb|elif| is a shortcut for \verb|else if|, allowing the construction of a conditional block with several conditions (not just ``this'' or ``that'').
