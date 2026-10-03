@@ -71,7 +71,7 @@
 \cfoot{\thepage}
 \rfoot{\input{../semester}}
 \lfoot{CMSC 104 Section \input{../section}}
-\AtEndDocument{\vfill \footnotesize{Last modified: 04 November 2024}}
+\AtEndDocument{\vfill \footnotesize{Last modified: 03 October 2026}}
 \AtEndDocument{\rfoot{\input{../semester}}}
 \renewcommand\thesubsection{\arabic{subsection}} % Show only subsection numbers, not section.subsection
 
@@ -106,25 +106,23 @@
         \tick \verb|random() < 0.66|
     \end{itemize}
 
-    \item A statement which controls the execution of other statements:
-    \begin{itemize}
-        \tick control structure
-    \end{itemize}
+    \item Accessing a single character in a string is called what?
+    \begin{enumerate}
+        \tick Indexing
+    \end{enumerate}
 
-    \item Placing a decision inside of another:
-    \begin{itemize}
-        \tick nesting
-        \fail serialization \textit{- this refers to saving an instance of a data structure, like a class, to a file.}
-    \end{itemize}
+    \item Merging two or more strings into a larger string is called what?
+    \begin{enumerate}
+        \tick Concatenating
+    \end{enumerate}
+
+    \item Getting a sub-string from a larger string ("science" from "Computer science is fun") is called what?
+    \begin{enumerate}
+        \tick Slicing
+    \end{enumerate}
 
     \item Briefly describe how top-level design and prototyping differ. \\
     \textit{Top-level design breaks up a problem into smaller and smaller pieces, possibly implemented as functions. Once all pieces are implemented, the project is likely done, unless there are any bugs. Prototyping completes only part of the project, that part is tested, more features are implemented, tested again, and the process repeats until eventually all features are implemented.}
-
-    \item List three ways you might use exception handling. \\
-    \textit{1. Ensure that the user entered the expected data type, such as Float or Integer from a string.\\2. Gracefully handle an error if the program wasn't able to load data from a file or save data to a file.\\3.Catch an error where invalid data might cause another function to have an error, such as trying to find the square root of a negative number.}
-
-    \item What might be a benefit of using a function even if it gets called only once? \\
-    \textit{A function has a name, and sometimes associating a name with a particular section of code helps convey the meaning or purpose behind it, make the project more readable.}
 
 \end{enumerate}
 
