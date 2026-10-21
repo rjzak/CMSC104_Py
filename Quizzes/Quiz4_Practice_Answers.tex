@@ -71,7 +71,7 @@
 \cfoot{\thepage}
 \rfoot{\input{../semester}}
 \lfoot{CMSC 104 Section \input{../section}}
-\AtEndDocument{\vfill \footnotesize{Last modified: 20 November 2024}}
+\AtEndDocument{\vfill \footnotesize{Last modified: 20 October 2026}}
 \AtEndDocument{\rfoot{\input{../semester}}}
 \renewcommand\thesubsection{\arabic{subsection}} % Show only subsection numbers, not section.subsection
 
@@ -84,14 +84,15 @@
 \paragraph{}Quiz 4 covers chapters 1 through 12. Please answer the following questions. Partial credit may be given for incomplete free response questions.
 
 \begin{enumerate}
-    \item Which of the following item types are mutable?
+    \item What are not goals of unit testing?
     \begin{itemize}
-        \tick List
-        \tick Dictionary
-        \fail Tuple
-        \tick Class
-        \tick Set
-        \fail String
+        \tick Test that the program runs fast enough to be used in a video game.
+        \tick Check that the documentation matches what a code snippet actually does.
+    \end{itemize}
+
+    \item Which expression is true approximately 66\% of the time?
+    \begin{itemize}
+        \tick \verb|random() < 0.66|
     \end{itemize}
     
     \item What is the manner by which classes worth together, or how a program uses a class?
@@ -148,9 +149,8 @@ def remove_duplicates_test():
     
     \item When working with a class, it's usually not advisable to access the field members directly. \textit{True}
     
-    \item A list must contain a minimum of one item. \textit{False. A list can be empty.}
-    
-    \item A list or a tuple must contain elements of the same type. \textit{False.}
+    \item Briefly describe how top-level design and prototyping differ. \\
+    \textit{Top-level design breaks up a problem into smaller and smaller pieces, possibly implemented as functions. Once all pieces are implemented, the project is likely done, unless there are any bugs. Prototyping completes only part of the project, that part is tested, more features are implemented, tested again, and the process repeats until eventually all features are implemented.}
     
 \end{enumerate}
 

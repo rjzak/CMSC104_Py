@@ -68,7 +68,7 @@
 \cfoot{\thepage}
 \rfoot{\input{../semester}}
 \lfoot{CMSC 104 Section \input{../section}}
-\AtEndDocument{\vfill \footnotesize{Last modified: 20 November 2024}}
+\AtEndDocument{\vfill \footnotesize{Last modified: 20 October 2026}}
 \AtEndDocument{\rfoot{\input{../semester}}}
 \renewcommand\thesubsection{\arabic{subsection}} % Show only subsection numbers, not section.subsection
 
@@ -81,14 +81,22 @@
 \paragraph{}Quiz 4 covers chapters 1 through 12. Please answer the following questions. Partial credit may be given for incomplete free response questions.
 
 \begin{enumerate}
-    \item Which of the following item types are mutable?
+    \item What are not goals of unit testing?
     \begin{itemize}
-        \item List
-        \item Dictionary
-        \item Tuple
-        \item Class
-        \item Set
-        \item String
+        \item Ensure that a function returns the expected output.
+        \item Ensure that known error conditions are caught.
+        \item Test that the program runs fast enough to be used in a video game.
+        \item Check that the documentation matches what a code snippet actually does.
+        \item Help ensure that the program still works after a considerable code refactor (rewriting a part of the program but not changing any functionality).
+    \end{itemize}
+
+    \item Which expression is true approximately 66\% of the time?
+    \begin{itemize}
+        \item \verb|random() >= 66|
+        \item \verb|random() < 0.66|
+        \item \verb|random() < 66|
+        \item \verb|random() >= 0.66|
+        \item \verb|random() % 66|
     \end{itemize}
     
     \item What is the manner by which classes worth together, or how a program uses a class?
@@ -113,9 +121,7 @@
     
     \item When working with a class, it's usually not advisable to access the field members directly.
     
-    \item A list must contain a minimum of one item.
-    
-    \item A list or a tuple must contain elements of the same type.
+    \item Briefly describe how top-level design and prototyping differ.
     
 \end{enumerate}
 

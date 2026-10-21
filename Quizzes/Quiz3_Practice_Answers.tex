@@ -71,7 +71,7 @@
 \cfoot{\thepage}
 \rfoot{\input{../semester}}
 \lfoot{CMSC 104 Section \input{../section}}
-\AtEndDocument{\vfill \footnotesize{Last modified: 03 October 2026}}
+\AtEndDocument{\vfill \footnotesize{Last modified: 20 October 2026}}
 \AtEndDocument{\rfoot{\input{../semester}}}
 \renewcommand\thesubsection{\arabic{subsection}} % Show only subsection numbers, not section.subsection
 
@@ -84,27 +84,38 @@
 \paragraph{}Quiz 3 covers chapters 1 through 9. Please answer the following questions. Partial credit may be given for incomplete free response questions.
 
 \begin{enumerate}
+	\item Which of the following item types are mutable?
+    \begin{itemize}
+        \tick List
+        \tick Dictionary
+        \fail Tuple
+        \tick Class
+        \tick Set
+        \fail String
+    \end{itemize}
+
     \item A sentinel controlled loop is a type of event loop. But what about it makes it different? What are any limitations? \\
-    \textit{Both loops have an unknown number of iterations. But a sentinel-controlled loop uses a predetermined sentinel value to know when the loop is over, such as receiving a negative value when it's known that only positive values are permitted. A limitation is that the value or type of response used as the sentinel value cannot be used as a real value because you wouldn't be able to determine ``is this value the end of the list or is it a legitimate value to be considered''?} \\
+    \textit{Sentinel-controlled loops and other event loops have an unknown number of iterations. But a sentinel-controlled loop uses a predetermined  value to know when the loop is over, such as receiving a negative value when it's known that only positive values are permitted. A limitation is that the value or type of response used as the sentinel value cannot be used as a real value because you wouldn't be able to determine ``is this value the end of the list or is it a legitimate value to be considered''?} \\
     \textit{Compare a sentinel-controlled loop to a loop which might ask the user for corrected information of the user provided something incorrect. That error checking loop might not run at all, or it could run of the first input was incorrect. Both run for an unpredictable amount of times but for different reasons.}
+
+    \item What are examples for when you'd use a \texttt{for} loop vs. a \texttt{while} loop? \\ \textit{A \texttt{for} loop is ideal for when the number of iterations is known at programming time. It may be a situation for the loop runs for a specific amount of iterations, or some amount of iterations represented in a variable, or for iterating over the number of items in a collection (such as a list). A \texttt{while} loop is for situations when the number of iterations cannot be known at programming time, or the loop may never run. This could be waiting for a variable to reach some minimum variable, or asking the user to enter a correct value if the user previously entered an incorrect value (input validation). Sometimes referred to as an event-controlled loop.}
+
+    \item What are the types of loops discussed in class?
+    \begin{enumerate}
+        \tick Definitive loops (counter-controlled loops) \textit{Loops which run for a specific amount of iterations.}
+		\tick Indefinite loops (event-controlled loops) \textit{Loops which run until something happens, like a variable reaches some value, a button is clicked on the graphical interface, or perhaps doesn't run at all.}
+		\fail Gaming loop (optimized for compute-intensive tasks, such as video games) \textit{Not a real thing.}
+		\fail Even-odd loop (skips odd iterations) \textit{Not a real thing.}
+		\fail Operating System loops (used only by operating systems to keep the computer powered on) \textit{Not a real thing.}
+    \end{enumerate}
 
     \item Given: \verb|a = True, b = False|, evaluate the following boolean instructions and indicate if they're true or false.
     \begin{enumerate}
         \item \verb|a and not b == (a or !a)| \textit{True}
         \item \verb|not (a or b) == not(a) and not(b)| \textit{True, and the values of $a$ and $b$ don't matter here. \textit{De Morgan's Law}}
         \item \verb|b == 0| \textit{True}
+        \item \verb|a and not(b) == a and b| \textit{False}
     \end{enumerate}
-
-    \item What are not goals of unit testing?
-    \begin{itemize}
-        \tick Test that the program runs fast enough to be used in a video game.
-        \tick Check that the documentation matches what a code snippet actually does.
-    \end{itemize}
-
-    \item Which expression is true approximately 66\% of the time?
-    \begin{itemize}
-        \tick \verb|random() < 0.66|
-    \end{itemize}
 
     \item Accessing a single character in a string is called what?
     \begin{enumerate}
@@ -121,8 +132,11 @@
         \tick Slicing
     \end{enumerate}
 
-    \item Briefly describe how top-level design and prototyping differ. \\
-    \textit{Top-level design breaks up a problem into smaller and smaller pieces, possibly implemented as functions. Once all pieces are implemented, the project is likely done, unless there are any bugs. Prototyping completes only part of the project, that part is tested, more features are implemented, tested again, and the process repeats until eventually all features are implemented.}
+    \item A list must contain a minimum of one item. \textit{False. A list can be empty.}
+
+    \item A list or a tuple must contain elements of the same type. \textit{False.}
+
+    \item If you write an if-else statement with a nested if-else statement and find that you have blocks with identical code, what might be done differently? \\ \textit{Nested if-else statements with the same blocks usually indicate a place where two if statements can be compressed into an if statement with an \texttt{and} statement to link two or more boolean logic statements into one if-else statement.}
 
 \end{enumerate}
 
