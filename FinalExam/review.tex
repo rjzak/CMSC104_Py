@@ -1,4 +1,4 @@
-% Copyright 2024 Richard J. Zak
+% Copyright 2024-6 Richard J. Zak
 % richard.j.zak@gmail.com
 
 \documentclass[letter,10pt]{article}
@@ -13,7 +13,7 @@
     pdftitle={Final Exam Review},    % title
     pdfauthor={Richard Zak},     % author
     pdfsubject={UMBC CMSC104 Problem Solving and Computer Programming},   % subject of the document
-    pdfkeywords={Computer Science, Programming, Problem Solving, CSEE}, % list of keywords
+    pdfkeywords={Computer Science, Programming, Problem Solving, Python, CSEE}, % list of keywords
     pdfnewwindow=true,      % links in new PDF window
     colorlinks=true,       % false: boxed links; true: colored links
     linkcolor=blue,          % color of internal links (change box color with linkbordercolor)
@@ -50,7 +50,7 @@
 \cfoot{\thepage}
 \rfoot{\input{../semester}}
 \lfoot{CMSC 104 Section \input{../section}}
-\AtEndDocument{\vfill \footnotesize{Last modified: 03 May 2025}}
+\AtEndDocument{\vfill \footnotesize{Last modified: 14 November 2026}}
 \AtEndDocument{\rfoot{\input{../semester}}}
 \renewcommand\thesubsection{\arabic{subsection}} % Show only subsection numbers, not section.subsection
 \title{Final Exam Review}
@@ -84,7 +84,7 @@
     \item Tape - slow, but that's fine for backing up data since it's seldom used (hopefully)
 \end{enumerate}
 
-\paragraph{}Computer memory and these long-term storage devices provide \texttt{random access}, meaning it is possible to read any single byte from any location without having to read \texttt{all} of the preceding bytes. The exception: tape back-up. To retrieve some data at the end of the tape, the entirety of the tape's contents must be read! This, and because the tape systems are slow, makes reading from tape data very slow.
+\paragraph{}Computer memory and these long-term storage devices provide \texttt{random access}, meaning it is possible to read any single byte from any location without having to read \texttt{all} of the preceding bytes. The exception: tape back-up. To retrieve some data at the end of the tape, the entirety of the tape's contents must be read! This, and because the tape systems are slow, makes reading from tape data very slow. Tapes are commonly used in regulated industries, where records have to be retained for some minimum amount of time and likely won't be needed. An analogy: random access is like opening a book to any page, tape is like unscrolling an ancient scroll to get to a specific item.
 
 \subsection{Input/Output Devices}
 \paragraph{}Simply put, input devices receive data, and output devices send data to the user. Examples:
@@ -146,7 +146,7 @@ An algorithm is a finite set of unambiguous, executable instructions which direc
 \paragraph{}Python is an interpreted language, which means that you have to have Python installed to run (or execute) a Python application (or script). This is in contrast to compiled languages, such as C/C++, Fortran, Go, Rust, which contain code which are compiled into a stand-alone application. The person running a program which is compiled does not need the compiler installed to run the program.
 
 \subsection{Variables \& Data Types}
-\paragraph{}Data is stored in a variable, much like in algebra. The variable represents some value, such as $x = 5$ means that referencing $x$ will result in the variable being treated as if it were the number five, until the value is altered. In addition to the value, a variable also has a data type. Some basic data types are:
+\paragraph{}Data is stored in a variable, much like in algebra. The variable represents some value, such as $x = 5$ means that referencing $x$ will result in the variable being treated as if it were the number five, until the value is altered. In addition to the value, a variable also has a data type. Most data types are one of the following:
 
 \begin{itemize}
     \item Integer: a numeric value which does not have value after the decimal point. Example: $3$.
@@ -154,6 +154,8 @@ An algorithm is a finite set of unambiguous, executable instructions which direc
     \item Character: a value representing one character, such as ``A''.
     \item String: an array or sequence of many characters, such as ``Apples are delicious''.
     \item Boolean: a value which represents only True or False.
+    \item Objects/\hyperref[sec:classes]{Classes}: types which contain other variables which are related to the purpose of the class and what that class is trying to model or represent.
+    \item \hyperref[sec:containers]{Containers}: lists, sets, tuples, dictionaries contain data which may be of different types. Lists and sets store items in a specific order, where sets cannot store duplicates and tuples cannot be altered. Dictionaries store data as unordered key:value pairs.
 \end{itemize}
 
 \FloatBarrier
@@ -213,7 +215,7 @@ An algorithm is a finite set of unambiguous, executable instructions which direc
 \begin{enumerate}
     \item Sequence: code is run in the order it's presented in the source code (or script), top to bottom.
     \item Repetition: code can be repeatedly run without having to type it out several times, typically in a loop but can also be a recursive function.
-    \item Selection or Branching: decisions can be made so that some part of the code may or may not be run, or there may be sections where it's one section \textit{or} another section, based on some criteria.
+    \item Selection or Branching: using \verb|if|, \verb|if|-\verb|else|, \verb|if|-\verb|elif| statements, decisions can be made so that some part of the code may or may not be run, or there may be sections where it's one section \textit{or} another section, based on some criteria.
 \end{enumerate}
 
 \paragraph{}Loops are a way to have the same code run for several \textit{iterations}. There are several types of loops depending on certain criteria.
@@ -233,10 +235,10 @@ An algorithm is a finite set of unambiguous, executable instructions which direc
 \subsection{Conditionals}
 \paragraph{}Sometimes, depending on some condition(s), code should or should not run. This decision takes the form of an \verb|if| statement. There may be a code segment which runs \verb|if| a condition is true, and there might be other code which runs after the \verb|else| keyword if the condition in the \verb|if| was false. The keyword \verb|elif| is a shortcut for \verb|else if|, allowing the construction of a conditional block with several conditions (not just ``this'' or ``that'').
 
-\subsection{Lists, Sets, Tuples, \& Dictionaries}
-\paragraph{}Collections of data accessible under one variable name allows for easier access to several items. Lists, Sets, and Tuples allow for variables to be stored and accessed by \textit{indexing} into it. So a list \verb|x = [0] * 100| contains one hundred zeros, which is manageable, unlike having to store a zero in one hundred separate variables. The difference between them is that Sets only allow unique items, tuples are immutable (read-only), and lists have no restrictions.
+\subsection{Lists, Sets, Tuples, and Dictionaries}\label{sec:containers}
+\paragraph{}Containers (or collections) of data accessible under one variable name allows for easier access to several items. Lists, Sets, and Tuples allow for variables to be stored and accessed by \textit{indexing} into it. So a list \verb|x = [0] * 100| contains one hundred zeros, which is manageable, unlike having to store a zero in one hundred separate variables. The difference between them is that Sets only allow unique items, Tuples are immutable (read-only), and lists have no restrictions.
 
-\paragraph{}Dictionaries can be thought of as lists which allow indexing by a string instead of an integer. They are ideal for non-sequential data, and can be faster for accessing an element.
+\paragraph{}Dictionaries can be thought of as lists which allow indexing by a string instead of an integer. They are ideal for non-sequential data, and can be faster for accessing an element. Side note: dictionaries are similar to the JSON\footnote{\url{https://docs.python.org/3/library/json.html}} format, which is helpful with \hyperref[sec:fileio]{serialization}.
 
 \paragraph{}For all of these types (lists, sets, tuples, dictionaries), the contained data can be anything: more lists, sets, tuples, classes, etc. A ``list of lists'' might be a way to implement a matrix, for example.
 
@@ -250,7 +252,7 @@ An algorithm is a finite set of unambiguous, executable instructions which direc
 
 \paragraph{}Finally, functions themselves are treated as variables in Python, such that a function may be a parameter to a function. This was discussed in the context of sorting, allowing for the sorting of a list of tuples or list of classes. Which element (in the tuple or class) is to be used as the basis for sorting the list? A function as a parameter can solve this, allowing the use of Python's built-in \verb|sort| function instead of having to recreate it.
 
-\subsection{Classes}
+\subsection{Classes}\label{sec:classes}
 \paragraph{}Classes can be thought of a software object to model something, such that this ``something'' has data (or attributes or characteristics) and functions/methods (things it \textit{does}). There are a few class-related concepts to remember:
 
 \begin{itemize}
@@ -279,28 +281,40 @@ class.
 \end{itemize}
 
 \subsection{Modules}
-\paragraph{}Python has several built-in \textit{modules}, such as \verb|math|, \verb|sys|, and many others. Python can also access elements from other Python files through this module system. For example, if you had a class called \verb|Grades| in a file called \verb|school.py|, a Python file in the same directory could access that class by first importing the class \verb|from school import Grades|, or by with \verb|import school|, and later using \verb|school.Grades| to call the class' constructor.
+\paragraph{}Python has several built-in \textit{modules}, such as \verb|math|, \verb|sys|, \verb|os|, and many others. Python can also access elements from other Python files through this module system. For example, if you had a class called \verb|Grades| in a file called \verb|school.py|, a Python file in the same directory could access that class by first importing the class \verb|from school import Grades|, or by with \verb|import school|, and later using \verb|school.Grades| to call the class' constructor.
 
-\paragraph{}Python has a rich ecosystem of third-party modules created by people around the world, and they are usually listed on \url{https://pypi.org}. Python has a tool called \verb|pip| which makes it easy to install modules from PyPI.
+\paragraph{}Python has a rich ecosystem of third-party modules created by people around the world, and they are usually listed on \url{https://pypi.org}. Python has a tool called \verb|pip| which makes it easy to install modules from PyPI. Side note: when using PyPi, ensure you're accessing the correct module and that you don't have a spelling mistake, and there could be malware on PyPi.org.
 
 \subsection{Testing}
-\paragraph{}Some say code doesn't work until it's tested and found to be correct. Testing in this case refers to unit tests, which have some sample input for a function, some expected output from a function, and ensure the function under test returns the expected output. A proper test shows an error message if the expected and received data returned aren't a match.
+\paragraph{}Some say code doesn't work until it's tested and found to be correct. Testing in this case refers to unit tests, which have some sample input for a function, some expected output from a function, and ensure the function under test returns the expected output. A proper test shows an error message if the expected and received data returned aren't a match. Thinking about unit tests while developing the code from the beginning can help guide you so you can think about how to make functions more suitable for testing from the beginning, rather than going back afterwards and trying to see how to test the various aspects of a program's functionality.
 
 \paragraph{}Unit tests are especially helpful for a few reasons:
 \begin{itemize}
-    \item Unit tests ensure that the function being tested works correctly. This assumes that the function is being tested with a few input types, including invalid inputs to test that the function has an error when it should.
-    \item Having unit tests can help ensure that a program still works properly when a big change as been made (that nothing has broken in the process of development).
+    \item Unit tests ensure that the function being tested works correctly. This assumes that the function is being tested with a few input types, including invalid inputs to test that the function has an error when it should. This can be easier than repeatedly running the program with different inputs in hope of testing all the functionality (which becomes more difficult as the project grows).
+    \item Having unit tests can help ensure that a program still works properly when a big change as been made (that nothing has broken in the process of development), such as a change in the Python version or using a new dependency (helper Python module).
     \item When working on a team, unit tests can ensure that new code contributions don't break the project.
     \item Often, projects use third-party modules, and unit tests can ensure that updates to these modules don't break the project.
 \end{itemize}
+
+\subsection{File Input/Output}\label{sec:fileio}
+\paragraph{}Seldom do we have programs which don't need external data, or don't write out some data. Therefore it is important to be able to read and write data to and from files. This is basic to all of computing, ranging from a web browser knowing your settings, a video game reading its game data, saving a report document in Microsoft Word or Excel, and countless other examples.
+
+\paragraph{}In Python, we use the \verb|open()| function to open a file name, and specify what we're doing with it (reading or writing, plain text or raw bytes). The result of the \verb|open()| function is a file object \hyperref[sec:classes]{class} which also has functions for reading, writing, and importantly, closing the file when it's no longer needed. This process of converting data from memory to a file is \textit{serialization} and the reverse, going from data on disk to a data structure, is \textit{deserialization}.
+
+\paragraph{}The \verb|pickle|\footnote{\url{https://docs.python.org/3/library/pickle.html}} module makes it easy to serialize and deserialize Python data, but it can only do so for one variable. To get around this, \hyperref[sec:containers]{containers} can be used! If more than one variable needs saving, a list, tuple, set, or dictionary may save multiple items instead in one Python pickle file.
 
 \section{Software Design}
 \paragraph{}Designing software is a complicated task, and there are many ways to do this. The decision usually comes down to preference, though the nature of the project or the problem being solved may dictate a style over another.
 
 \begin{itemize}
     \item Top-Down: Work on the program's starting point first, breaking the problem into smaller pieces and gradually implementing \& connecting the pieces until the project works.
-    \item Bottom-Up: Work on the small items first, gradually working up to the main program.
-    \item Prototyping: Work on parts of the program, keeping the program functioning though incomplete. Fill in the gaps as development progresses. Start with a much easier goal and fewer features, test that it works, add more features.
+    \item Bottom-Up: Work on the small items first, gradually working up to the main program by connecting these small components into the larger program.
+    \item Prototyping: Work on all parts of the program, keeping the program functioning though incomplete. Fill in the gaps as development progresses. Start with a much easier goal and fewer features, test that it works, add more features; repeat.
 \end{itemize}
+
+\section{Modeling and Simulation}
+\paragraph{}A computer can be used to model or simulate some real-life situation, ranging from how well players of different skills do when playing a game, or how well an engine might perform prior to manufacturing. ``All models are wrong, but some are useful''\footnote{\url{https://en.wikipedia.org/wiki/All_models_are_wrong}}.
+
+\paragraph{}Using the \verb|random| module, we can use random numbers to simulate possible outcomes. These are often referred to as Monte Carlo simulations\footnote{\url{https://en.wikipedia.org/wiki/Monte_Carlo_method}}. By fetching and comparing random numbers, we can simulate various scenarios. Care needs to be taken to ensure results from the model or simulation make sense, which is part of the scientific method: make a hypothesis, write the code to test, run the code to collect results, do the results make sense or does the result contradict the hypothesis?
 
 \end{document}
